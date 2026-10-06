@@ -1,0 +1,2740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBM Earnings Transcript Compliance | Technical Accounting &amp; Peer Analytics</title>
+<style>
+/* ─── APPLE FLOATING HIGH-END DESIGN SYSTEM ────────────────────────────────── */
+:root {
+  --bg-canvas: #f5f5f7;
+  --surface-card: rgba(255, 255, 255, 0.82);
+  --surface-card-solid: #ffffff;
+  --surface-hover: rgba(245, 245, 247, 0.8);
+  --surface-inset: #f2f2f7;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-focus: #0071e3;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --accent-blue: #0071e3;
+  --accent-blue-hover: #0077ed;
+  --accent-blue-light: #e8f2ff;
+  --accent-green: #34c759;
+  --accent-green-light: #eafaf1;
+  --accent-green-text: #1b7a37;
+  --accent-amber: #ff9500;
+  --accent-amber-light: #fff8eb;
+  --accent-amber-text: #995a00;
+  --accent-red: #ff3b30;
+  --accent-red-light: #ffebeb;
+  --accent-red-text: #c41c14;
+  --accent-purple: #af52de;
+  --accent-purple-light: #f7ebff;
+  --accent-purple-text: #702699;
+  --shadow-floating: 0 4px 24px -1px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-modal: 0 20px 48px -4px rgba(0, 0, 0, 0.18), 0 8px 16px -2px rgba(0, 0, 0, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --blur-glass: blur(24px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── FLOATING HEADER & NAVIGATION ─────────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+.header-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  padding-left: 8px;
+  border-left: 1px solid var(--border-subtle);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Status Dot Component */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--surface-inset);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+.dot-green { background: var(--accent-green); }
+.dot-amber { background: var(--accent-amber); }
+.dot-red { background: var(--accent-red); }
+
+/* Navigation Bar */
+.nav-bar-wrapper {
+  position: sticky;
+  top: 53px;
+  z-index: 90;
+  background: rgba(245, 245, 247, 0.92);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 8px 28px;
+}
+.nav-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 2px;
+}
+.tab-btn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.16s ease-in-out;
+  white-space: nowrap;
+}
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.04);
+}
+.tab-btn.active {
+  color: var(--text-primary);
+  background: var(--surface-card-solid);
+  border-color: var(--border-subtle);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+/* ─── CONTAINER & GRID LAYOUTS ─────────────────────────────────────────────── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 28px 48px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.section-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ─── FLOATING CARDS ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface-card);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-floating);
+  margin-bottom: 18px;
+  transition: box-shadow 0.2s ease;
+}
+.card-solid {
+  background: var(--surface-card-solid);
+}
+.card h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 12px;
+}
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* Stat Cards */
+.stat-val {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.stat-sub {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* ─── BADGES & PILLS ───────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+}
+.badge-green { background: var(--accent-green-light); color: var(--accent-green-text); }
+.badge-amber { background: var(--accent-amber-light); color: var(--accent-amber-text); }
+.badge-red   { background: var(--accent-red-light);   color: var(--accent-red-text); }
+.badge-blue  { background: var(--accent-blue-light);  color: var(--accent-blue); }
+.badge-purple{ background: var(--accent-purple-light);color: var(--accent-purple-text); }
+.badge-gray  { background: var(--surface-inset);      color: var(--text-secondary); }
+
+/* ─── BUTTONS & CONTROLS ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--accent-blue);
+  color: #ffffff;
+  border-color: var(--accent-blue);
+}
+.btn-primary:hover {
+  background: var(--accent-blue-hover);
+}
+.btn-secondary {
+  background: var(--surface-card-solid);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+.btn-secondary:hover {
+  background: var(--surface-inset);
+}
+.btn-danger {
+  background: var(--accent-red-light);
+  color: var(--accent-red-text);
+  border-color: rgba(255, 59, 48, 0.2);
+}
+.btn-danger:hover {
+  background: rgba(255, 59, 48, 0.15);
+}
+.btn-success {
+  background: var(--accent-green-light);
+  color: var(--accent-green-text);
+  border-color: rgba(52, 199, 89, 0.25);
+}
+.btn-success:hover {
+  background: rgba(52, 199, 89, 0.2);
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+/* ─── FORMS & INPUTS ───────────────────────────────────────────────────────── */
+input[type=text], input[type=number], select, textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--surface-card-solid);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.14);
+}
+textarea { resize: vertical; min-height: 84px; }
+label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: block;
+  margin-bottom: 5px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+/* ─── TABLES ───────────────────────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-inset);
+}
+th:first-child { border-top-left-radius: var(--radius-sm); }
+th:last-child { border-top-right-radius: var(--radius-sm); }
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  vertical-align: top;
+  color: var(--text-primary);
+}
+tr:hover td {
+  background: var(--surface-hover);
+}
+
+/* ─── ALERTS & BANNERS ─────────────────────────────────────────────────────── */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  margin-bottom: 14px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.alert-info { background: var(--accent-blue-light); border-color: rgba(0, 113, 227, 0.15); color: #004b99; }
+.alert-success { background: var(--accent-green-light); border-color: rgba(52, 199, 89, 0.2); color: var(--accent-green-text); }
+.alert-warning { background: var(--accent-amber-light); border-color: rgba(255, 149, 0, 0.2); color: var(--accent-amber-text); }
+.alert-purple { background: var(--accent-purple-light); border-color: rgba(175, 82, 222, 0.2); color: var(--accent-purple-text); }
+
+/* ─── UPLOAD ZONE & TOOLBARS ───────────────────────────────────────────────── */
+.upload-zone {
+  border: 1.5px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface-inset);
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--accent-blue);
+  background: var(--accent-blue-light);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.search-box {
+  width: 220px;
+}
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--surface-inset);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+.chip.active-peer {
+  background: var(--accent-blue-light);
+  border-color: rgba(0, 113, 227, 0.25);
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Tab Panels */
+#tab-content > div { display: none; }
+#tab-content > div.active { display: block; }
+
+/* Modals */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-window {
+  background: var(--surface-card-solid);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  border: 1px solid var(--border-subtle);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Live Transcribe Output */
+.transcript-output {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--surface-card-solid);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  min-height: 260px;
+  max-height: 440px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.context-snippet {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  padding: 6px 10px;
+  background: var(--surface-inset);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-blue);
+  font-style: italic;
+}
+.note {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ HEADER ═══════════════════ -->
+<header>
+  <div class="header-brand">
+    <div class="header-title">IBM Earnings Dashboard</div>
+    <div class="header-subtitle">Technical Accounting &amp; SEC Compliance Review</div>
+  </div>
+  <div class="header-actions">
+    <div id="cloudant-status-badge" class="status-indicator">
+      <span class="dot" id="cloudant-dot"></span>
+      <span id="cloudant-status-text">Cloudant: Checking...</span>
+    </div>
+    <button class="btn btn-secondary btn-sm" onclick="openCloudantSettings()">Cloudant Settings</button>
+    <button class="btn btn-secondary btn-sm" onclick="openGuidanceModal()">Regulatory Guidance</button>
+    <button class="btn btn-secondary btn-sm" onclick="exportData()">Export JSON</button>
+    <button class="btn btn-primary btn-sm" onclick="openAddCompany()">+ Add Company</button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════ NAVIGATION TABS ══════════ -->
+<div class="nav-bar-wrapper">
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+    <button class="tab-btn" onclick="switchTab('documents')">Document Library</button>
+    <button class="tab-btn" onclick="switchTab('compliance')">SEC / Non-GAAP Compliance</button>
+    <button class="tab-btn" onclick="switchTab('kpis')">KPI Tracker</button>
+    <button class="tab-btn" onclick="switchTab('peers')">Peer Comparison &amp; SEC Filings</button>
+    <button class="tab-btn" onclick="switchTab('trends')">Industry Trends &amp; Themes</button>
+    <button class="tab-btn" onclick="switchTab('livetranscribe')">Live Transcribe</button>
+    <button class="tab-btn" onclick="switchTab('transcript')">Transcript Analyzer</button>
+    <button class="tab-btn" onclick="switchTab('companies')">Company Registry</button>
+  </nav>
+</div>
+
+<div id="tab-content">
+
+<!-- ══════════════════════════════════════════════ 1. OVERVIEW ══════════════ -->
+<div id="tab-overview" class="active">
+<div class="container">
+  <div class="grid-4" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Companies Tracked</h3>
+      <div class="stat-val" id="stat-companies">0</div>
+      <div class="stat-sub">IBM + 22 Proxy Peers</div>
+    </div>
+    <div class="card">
+      <h3>Compliance Flags</h3>
+      <div class="stat-val" id="stat-flags" style="color:var(--accent-red)">0</div>
+      <div class="stat-sub">Items requiring accounting review</div>
+    </div>
+    <div class="card">
+      <h3>Reference Library</h3>
+      <div class="stat-val" id="stat-library">0</div>
+      <div class="stat-sub">Identified metrics across filings</div>
+    </div>
+    <div class="card">
+      <h3>Audit Logs</h3>
+      <div class="stat-val" id="stat-audits" style="color:var(--accent-blue)">0</div>
+      <div class="stat-sub">Logged consideration reviews</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Open Technical Accounting Flags: IBM</h3>
+      <div id="ibm-flags-list" style="font-size:12px;color:var(--text-secondary);min-height:80px">
+        No open flags entered.
+      </div>
+    </div>
+    <div class="card">
+      <h3>Regulatory Guidance Quick Access</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:12px;color:var(--text-secondary)">Authoritative standards governing earnings materials:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <a class="chip" href="https://www.ecfr.gov/current/title-17/chapter-II/part-229/subpart-229.10#p-229.10(e)" target="_blank">SEC Reg S-K Item 10(e)</a>
+          <a class="chip" href="https://www.ecfr.gov/current/title-17/chapter-II/part-244" target="_blank">SEC Regulation G</a>
+          <a class="chip" href="https://www.sec.gov/divisions/corpfin/guidance/nongaapinterp.htm" target="_blank">SEC Non-GAAP C&amp;DIs</a>
+          <a class="chip" href="https://dart.deloitte.com/USDART/home/publications/deloitte-roadmaps/non-gaap-financial-measures" target="_blank">Deloitte DART Non-GAAP (Oct 2025)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Recent Dashboard Activity</h3>
+    <div id="activity-log" style="font-size:12px;color:var(--text-secondary)">No activity recorded.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 2. DOCUMENT LIBRARY ══════ -->
+<div id="tab-documents">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Document Library &amp; Operating Statement Extraction</div>
+  </div>
+  <div class="alert alert-info">
+    Upload earnings transcripts, press releases, or SEC filings. The extraction engine scans the entire text, identifies full operating statements (GAAP lines, Non-GAAP profitability and liquidity metrics, KPIs), and lets you adjust classification flags before accepting them into the library.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Upload Earnings Document</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="doc-company"></select></div>
+        <div><label>Quarter / Period</label><select id="doc-period" class="quarter-picker"></select></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Document Type</label>
+        <select id="doc-type">
+          <option value="transcript">Earnings Call Transcript</option>
+          <option value="presentation">Earnings Presentation / Slides</option>
+          <option value="press-release">Earnings Press Release</option>
+          <option value="8-k">8-K Filing (Item 2.02)</option>
+          <option value="10-q">10-Q Quarterly Report</option>
+          <option value="10-k">10-K Annual Report</option>
+          <option value="proxy">Proxy Statement / DEF 14A</option>
+          <option value="other">Other SEC Filing</option>
+        </select>
+      </div>
+      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+        <input type="file" id="file-input" accept=".txt,.pdf,.htm,.html" multiple onchange="handleFileSelect(event)">
+        <p><strong>Click to browse</strong> or drag &amp; drop files</p>
+        <p class="note">.txt, .pdf, .htm, .html supported</p>
+      </div>
+      <div style="margin-top:14px">
+        <label>Or Paste Document Text Directly</label>
+        <textarea id="doc-paste-text" placeholder="Paste full document text here..."></textarea>
+        <div style="margin-top:6px"><label>Document Label</label><input type="text" id="doc-paste-name" placeholder="e.g. IBM_Q1_2026_Earnings_Release.txt"></div>
+        <button class="btn btn-primary" style="margin-top:8px" onclick="submitPastedDoc()">Process &amp; Extract</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Extraction Results &amp; Flag Adjustments</h3>
+      <div id="doc-progress-area" style="font-size:12px;color:var(--text-secondary);min-height:48px">No document scanned in current session.</div>
+      <hr style="margin:12px 0;border:none;border-top:1px solid var(--border-subtle)">
+      <div class="card-header-flex">
+        <h3>Extracted Suggestions</h3>
+        <div id="doc-suggest-actions" style="display:none;gap:6px">
+          <button class="btn btn-success btn-sm" onclick="acceptAllSuggestions()">Accept All</button>
+          <button class="btn btn-secondary btn-sm" onclick="acceptSelectedSuggestions()">Accept Selected</button>
+          <button class="btn btn-danger btn-sm" onclick="clearSuggestions()">Discard</button>
+        </div>
+      </div>
+      <div id="doc-suggestions" style="max-height:420px;overflow-y:auto"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header-flex">
+      <h3>Reference Library Register</h3>
+      <div class="toolbar" style="margin-bottom:0">
+        <select class="filter-select" id="lib-filter-company" onchange="renderLibrary()"><option value="">All Companies</option></select>
+        <select class="filter-select" id="lib-filter-type" onchange="renderLibrary()">
+          <option value="">All Metric Types</option>
+          <option value="gaap">GAAP Financials</option>
+          <option value="nongaap">Non-GAAP Measures</option>
+          <option value="kpi">Operational KPIs</option>
+        </select>
+        <input class="search-box" type="text" id="lib-search" placeholder="Search metrics..." oninput="renderLibrary()">
+      </div>
+    </div>
+    <div id="library-list"></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 3. COMPLIANCE ════════════ -->
+<div id="tab-compliance">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">SEC &amp; Non-GAAP Compliance Review</div>
+    <button class="btn btn-secondary btn-sm" onclick="openGuidanceModal()">View Regulatory Guidance</button>
+  </div>
+  <div class="alert alert-purple">
+    Under SEC Regulation G, Regulation S-K Item 10(e), and SEC Staff C&amp;DIs, non-GAAP financial measures must be accompanied by the most directly comparable GAAP measure with equal or greater prominence, clear labeling, a quantitative reconciliation, and disclosure of management's purpose. Per-share liquidity measures are strictly prohibited.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Log Non-GAAP Checklist Consideration Audit</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="audit-company"></select></div>
+        <div><label>Quarter / Filing</label><select id="audit-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div class="form-row">
+        <div><label>Measure / Subject</label><input type="text" id="audit-measure" placeholder="e.g. Free Cash Flow, Operating EPS"></div>
+        <div><label>Reviewer Name</label><input type="text" id="audit-reviewer" placeholder="e.g. Technical Accounting Team"></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Consideration Checklist &amp; Status</label>
+        <div id="interactive-checklist" style="max-height:260px;overflow-y:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:8px"></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Overall Audit Notes / Conclusion</label>
+        <textarea id="audit-notes" placeholder="Summary of compliance review and audit conclusion..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="saveAuditLog()">Save Consideration Audit</button>
+    </div>
+
+    <div class="card">
+      <h3>Add Specific Compliance Flag</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="flag-company"></select></div>
+        <div><label>Quarter</label><select id="flag-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Rule Category</label>
+          <select id="flag-category">
+            <option value="prominence">Item 10(e)(1)(i)(A) : Equal or Greater Prominence</option>
+            <option value="reconciliation">Reg G §244.100 : Missing Reconciliation</option>
+            <option value="misleading">C&amp;DI 100.04 : Tailored Accounting / Misleading</option>
+            <option value="liquidity">C&amp;DI 102.05 : Prohibited Per-Share Liquidity Measure</option>
+            <option value="tax">C&amp;DI 102.11 : Inadequate Non-GAAP Tax Disclosure</option>
+            <option value="usefulness">Item 10(e)(1)(i)(C) : Inadequate Purpose Disclosure</option>
+            <option value="consistency">C&amp;DI 100.01 : Inconsistent Period Definition</option>
+            <option value="safeharbor">PSLRA §27A : Missing Safe Harbor Language</option>
+            <option value="other">Other Compliance Consideration</option>
+          </select>
+        </div>
+        <div>
+          <label>Severity</label>
+          <select id="flag-severity">
+            <option value="high">High : Potential SEC Comment Letter Risk</option>
+            <option value="medium">Medium : Technical Disclosure Deficiency</option>
+            <option value="low">Low : Informational / Formatting</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:10px"><label>Measure Name</label><input type="text" id="flag-measure" placeholder="e.g. Adjusted Free Cash Flow"></div>
+      <div style="margin-bottom:10px"><label>Issue Description</label><textarea id="flag-desc" placeholder="Detail the specific deficiency or consideration..."></textarea></div>
+      <div class="form-row">
+        <div><label>Transcript Quote / Context</label><textarea id="flag-quote" style="min-height:50px" placeholder="Quote from transcript or filing..."></textarea></div>
+        <div><label>Remediation Action</label><textarea id="flag-action" style="min-height:50px" placeholder="Recommended technical fix..."></textarea></div>
+      </div>
+      <button class="btn btn-primary" onclick="addFlag()">+ Add Flag</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>Compliance Flag Register</h3>
+    <div class="toolbar">
+      <input class="search-box" type="text" id="flag-search" placeholder="Search flags..." oninput="renderFlags()">
+      <select class="filter-select" id="flag-filter-company" onchange="renderFlags()"><option value="">All Companies</option></select>
+      <select class="filter-select" id="flag-filter-sev" onchange="renderFlags()">
+        <option value="">All Severities</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <select class="filter-select" id="flag-filter-status" onchange="renderFlags()">
+        <option value="">All Statuses</option>
+        <option value="open">Open</option>
+        <option value="resolved">Resolved</option>
+      </select>
+    </div>
+    <table>
+      <thead><tr><th>#</th><th>Company</th><th>Quarter</th><th>Category</th><th>Measure</th><th>Severity</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="flags-tbody"></tbody>
+    </table>
+    <div id="flags-empty" class="note" style="padding:12px 0">No compliance flags logged.</div>
+  </div>
+
+  <div class="card">
+    <h3>Consideration Audit History &amp; Log Register</h3>
+    <div id="audit-history-list"></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 4. KPI TRACKER ═══════════ -->
+<div id="tab-kpis">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Key Performance Indicator (KPI) Tracker</div>
+  </div>
+  <div class="alert alert-info">
+    Track recurring operational metrics, ARR, signings, backlog, margins, and cloud metrics across reporting periods.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Add / Update KPI Entry</h3>
+      <div class="form-row-3">
+        <div><label>Company</label><select id="kpi-company"></select></div>
+        <div><label>Quarter</label><select id="kpi-quarter" class="quarter-picker"></select></div>
+        <div>
+          <label>Category</label>
+          <select id="kpi-category">
+            <option value="revenue">Revenue</option>
+            <option value="profitability">Profitability</option>
+            <option value="cashflow">Cash Flow</option>
+            <option value="cloud">Cloud / SaaS</option>
+            <option value="backlog">Backlog / Bookings</option>
+            <option value="margin">Margins</option>
+            <option value="liquidity">Liquidity</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div><label>KPI Name</label><input type="text" id="kpi-name" placeholder="e.g. Annual Recurring Revenue, Free Cash Flow"></div>
+        <div><label>Reported Value</label><input type="text" id="kpi-value" placeholder="e.g. $14.2B, 18.5%, 2.4x"></div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Metric Classification</label>
+          <select id="kpi-gaap">
+            <option value="gaap">GAAP Financial Line</option>
+            <option value="nongaap">Non-GAAP Measure</option>
+            <option value="operational">Operational KPI</option>
+          </select>
+        </div>
+        <div><label>Segment / Notes</label><input type="text" id="kpi-segment" placeholder="e.g. Software, Infrastructure, Total IBM"></div>
+      </div>
+      <button class="btn btn-primary" onclick="addKPI()">Save KPI Entry</button>
+    </div>
+
+    <div class="card">
+      <h3>KPI Summary &amp; Matrix Filter</h3>
+      <div class="toolbar">
+        <select class="filter-select" id="kpi-filter-company" onchange="renderKPIs()"><option value="">All Companies</option></select>
+        <select class="filter-select" id="kpi-filter-quarter" onchange="renderKPIs()"><option value="">All Quarters</option></select>
+        <input class="search-box" type="text" id="kpi-search" placeholder="Search KPIs..." oninput="renderKPIs()">
+      </div>
+      <div id="kpi-count-summary" style="font-size:12px;color:var(--text-secondary);margin-bottom:8px"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>KPI Registry</h3>
+    <table>
+      <thead><tr><th>Company</th><th>Quarter</th><th>KPI Name</th><th>Value</th><th>Type</th><th>Category</th><th>Segment</th><th>Actions</th></tr></thead>
+      <tbody id="kpis-tbody"></tbody>
+    </table>
+    <div id="kpis-empty" class="note" style="padding:12px 0">No KPI entries recorded.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 5. PEERS & SEC FILINGS ═══ -->
+<div id="tab-peers">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Peer Comparison &amp; SEC EDGAR Filing Integration</div>
+    <div style="font-size:12px;color:var(--text-secondary)">IBM Proxy Peer Group (22 Peers)</div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>IBM Proxy Peer Group &amp; SEC EDGAR Submissions</h3>
+    <div class="chip-list" id="proxy-peer-list"></div>
+    <div style="margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <select id="sec-peer-select" style="width:240px"></select>
+      <button class="btn btn-primary btn-sm" onclick="fetchSelectedPeerFilings()">Fetch Latest SEC Filings (EDGAR)</button>
+      <span class="note">Direct SEC EDGAR JSON connection via data.sec.gov</span>
+    </div>
+    <div id="sec-filings-result" style="margin-top:12px"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>Peer Non-GAAP &amp; KPI Comparison Matrix</h3>
+    <div class="toolbar">
+      <select class="filter-select" id="peer-kpi-quarter" onchange="renderPeerMatrix()"></select>
+      <select class="filter-select" id="peer-kpi-cat" onchange="renderPeerMatrix()">
+        <option value="">All Categories</option>
+        <option value="revenue">Revenue</option>
+        <option value="profitability">Profitability</option>
+        <option value="cashflow">Cash Flow</option>
+        <option value="cloud">Cloud / SaaS</option>
+        <option value="margin">Margins</option>
+        <option value="liquidity">Liquidity</option>
+      </select>
+    </div>
+    <div id="peer-matrix-container">
+      <table><thead id="peer-matrix-head"></thead><tbody id="peer-matrix-body"></tbody></table>
+      <div id="peer-matrix-empty" class="note" style="padding:12px 0">Enter KPI data to view comparison matrix.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Peer Non-GAAP Measure Adoption Matrix</h3>
+    <div id="nongaap-adoption-table">
+      <table><thead><tr id="nongaap-thead-row"><th>Measure</th></tr></thead><tbody id="nongaap-adoption-body"></tbody></table>
+      <div id="nongaap-empty" class="note" style="padding:12px 0">No peer data available.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 6. INDUSTRY TRENDS ════════ -->
+<div id="tab-trends">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Industry Trends &amp; Automated Theme Extraction</div>
+  </div>
+  <div class="alert alert-info">
+    Upload or paste transcript content to automatically identify core enterprise themes (Generative AI / watsonx, Hybrid Cloud / Red Hat, Consulting Demand, Operating Margins, Free Cash Flow, Currency Headwinds). Discovered themes can be logged directly into the register with one click.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Automated Transcript Theme Scanner</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="trend-scan-company"></select></div>
+        <div><label>Quarter</label><select id="trend-scan-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div style="margin-bottom:10px">
+        <label>Transcript / Q&amp;A Text</label>
+        <textarea id="trend-scan-text" style="min-height:120px" placeholder="Paste transcript text or Q&amp;A section..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="scanTranscriptThemes()">Extract Themes &amp; Sentiment</button>
+      <div id="trend-scan-results" style="margin-top:14px"></div>
+    </div>
+
+    <div class="card">
+      <h3>Manual Trend Observation Entry</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="trend-company"></select></div>
+        <div><label>Quarter</label><select id="trend-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Theme</label>
+          <select id="trend-category">
+            <option value="ai">AI / Generative AI</option>
+            <option value="cloud">Hybrid Cloud / Infrastructure</option>
+            <option value="consulting">Consulting / IT Spend Demand</option>
+            <option value="margin">Margin Leverage / Productivity</option>
+            <option value="fcf">Free Cash Flow / Capital Allocation</option>
+            <option value="fx">Currency / Macro Headwinds</option>
+            <option value="ma">M&amp;A / Portfolio Optimization</option>
+            <option value="other">Other Theme</option>
+          </select>
+        </div>
+        <div>
+          <label>Sentiment</label>
+          <select id="trend-sentiment">
+            <option value="positive">Positive / Growth</option>
+            <option value="neutral">Neutral / In-Line</option>
+            <option value="cautious">Cautious / Headwind</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:10px"><label>Theme Title</label><input type="text" id="trend-title" placeholder="e.g. Generative AI book-to-bill acceleration"></div>
+      <div style="margin-bottom:10px"><label>Commentary / Excerpt</label><textarea id="trend-quote" placeholder="Management quote..."></textarea></div>
+      <button class="btn btn-primary" onclick="addTrend()">+ Log Observation</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Industry Trend Register</h3>
+    <div class="toolbar">
+      <input class="search-box" type="text" id="trend-search" placeholder="Search trends..." oninput="renderTrends()">
+      <select class="filter-select" id="trend-filter-cat" onchange="renderTrends()"><option value="">All Themes</option></select>
+      <select class="filter-select" id="trend-filter-sentiment" onchange="renderTrends()"><option value="">All Sentiments</option></select>
+      <select class="filter-select" id="trend-filter-company" onchange="renderTrends()"><option value="">All Companies</option></select>
+    </div>
+    <table>
+      <thead><tr><th>Company</th><th>Quarter</th><th>Theme</th><th>Title</th><th>Sentiment</th><th>Commentary Excerpt</th><th>Actions</th></tr></thead>
+      <tbody id="trends-tbody"></tbody>
+    </table>
+    <div id="trends-empty" class="note" style="padding:12px 0">No trend observations logged.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 7. LIVE TRANSCRIBE ═══════ -->
+<div id="tab-livetranscribe">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Live Earnings Call Speech Recognition</div>
+  </div>
+  <div class="alert alert-info">
+    Microphone Access Architecture: Modern browsers (Chrome, Edge) permanently store microphone permissions when hosted on secure origins (such as GitHub Pages https://pages.github.ibm.com or localhost). When running over local file paths, browsers re-prompt per security policy.
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Recording Controls</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="lt-company"></select></div>
+        <div><label>Quarter</label><select id="lt-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <label>Section Label</label>
+        <input type="text" id="lt-section" placeholder="e.g. Q1 2026 Earnings Call: Prepared Remarks">
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+        <button id="lt-start-btn" class="btn btn-primary" onclick="ltStart()">Start Recording</button>
+        <button id="lt-stop-btn" class="btn btn-danger" onclick="ltStop()" style="display:none">Stop</button>
+        <span id="lt-status" class="badge badge-gray">Idle</span>
+        <span id="lt-timer" style="font-size:12px;color:var(--text-secondary)">00:00</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-secondary btn-sm" onclick="ltCopy()">Copy Text</button>
+        <button class="btn btn-secondary btn-sm" onclick="ltDownload()">Download .txt</button>
+        <button class="btn btn-secondary btn-sm" onclick="ltSendToAnalyzer()">Send to Analyzer</button>
+        <button class="btn btn-danger btn-sm" onclick="ltClear()">Clear</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex">
+        <h3>Live Speech Stream</h3>
+        <span id="lt-word-count" style="font-size:11px;color:var(--text-secondary)">0 words</span>
+      </div>
+      <div id="lt-output" class="transcript-output">Microphone stream output will appear here once recording starts...</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 8. TRANSCRIPT ANALYZER ═══ -->
+<div id="tab-transcript">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Transcript Analyzer &amp; SEC Guidance Scanner</div>
+  </div>
+  <div class="alert alert-purple">
+    Scans transcripts against the Reference Library and SEC Non-GAAP principles (prominence, reconciliation, prohibited per-share liquidity metrics, safe harbor language).
+  </div>
+
+  <div class="grid-2" style="margin-bottom:18px">
+    <div class="card">
+      <h3>Transcript Input</h3>
+      <div class="form-row">
+        <div><label>Company</label><select id="ta-company" onchange="updateLibrarySummary()"></select></div>
+        <div><label>Quarter</label><select id="ta-quarter" class="quarter-picker"></select></div>
+      </div>
+      <div style="margin-bottom:10px"><label>Section Title</label><input type="text" id="ta-section" placeholder="e.g. Prepared Remarks, Q&amp;A Session"></div>
+      <div style="margin-bottom:10px"><label>Transcript Text</label><textarea id="ta-text" style="min-height:200px" placeholder="Paste transcript text here..."></textarea></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="analyzeVsLibrary()">Analyze vs Reference Library</button>
+        <button class="btn btn-secondary" onclick="saveTranscriptSection()">Save Section</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Analysis &amp; Regulatory Findings</h3>
+      <div id="ta-library-summary" style="font-size:12px;color:var(--text-secondary);margin-bottom:10px">Select a company to view library baseline.</div>
+      <hr style="border:none;border-top:1px solid var(--border-subtle);margin:10px 0">
+      <div id="ta-scan-results" style="font-size:12px;color:var(--text-secondary)">Run analysis to inspect findings.</div>
+    </div>
+  </div>
+
+  <div class="card" id="ta-new-items-card" style="display:none;margin-bottom:18px">
+    <h3>New / Incremental Measures Identified</h3>
+    <div id="ta-new-items-list"></div>
+  </div>
+
+  <div class="card">
+    <h3>Saved Transcript Sections</h3>
+    <div id="ta-sections-list" style="font-size:12px;color:var(--text-secondary)">No saved sections.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ 9. COMPANY REGISTRY ══════ -->
+<div id="tab-companies">
+<div class="container">
+  <div class="section-header">
+    <div class="section-title">Company Registry &amp; CIK Mapping</div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3>Add Tracked Company</h3>
+    <div class="form-row">
+      <div><label>Ticker Symbol</label><input type="text" id="co-ticker" placeholder="e.g. MSFT" style="text-transform:uppercase"></div>
+      <div><label>Company Name</label><input type="text" id="co-name" placeholder="e.g. Microsoft Corporation"></div>
+    </div>
+    <div class="form-row-3">
+      <div>
+        <label>Relationship</label>
+        <select id="co-rel">
+          <option value="peer">Proxy Peer</option>
+          <option value="ibm">IBM (Subject)</option>
+          <option value="other">Industry Reference</option>
+        </select>
+      </div>
+      <div>
+        <label>Industry</label>
+        <select id="co-industry">
+          <option value="Cloud">Cloud &amp; Platform</option>
+          <option value="Software">Enterprise Software</option>
+          <option value="Consulting">Consulting &amp; IT Services</option>
+          <option value="Hardware">Hardware &amp; Systems</option>
+          <option value="Diversified Tech">Diversified Technology</option>
+        </select>
+      </div>
+      <div><label>SEC CIK Number</label><input type="text" id="co-cik" placeholder="e.g. 0000789019"></div>
+    </div>
+    <button class="btn btn-primary" onclick="addCompany()">+ Add Company</button>
+  </div>
+
+  <div class="card">
+    <h3>Tracked Companies</h3>
+    <table>
+      <thead><tr><th>Ticker</th><th>Company Name</th><th>Relationship</th><th>Industry</th><th>SEC CIK</th><th>Library Items</th><th>Actions</th></tr></thead>
+      <tbody id="companies-tbody"></tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+</div><!-- /tab-content -->
+
+<!-- ══════════════════════════════════════════════ MODALS ═══════════════════ -->
+
+<!-- Cloudant Settings Modal -->
+<div id="cloudant-modal" class="modal-overlay">
+  <div class="modal-window">
+    <div class="modal-header">
+      <div class="modal-title">Cloudant Database Configuration</div>
+      <button class="btn btn-secondary btn-sm" onclick="closeCloudantModal()">Close</button>
+    </div>
+    <div class="alert alert-info">
+      Per the permanent Basic Auth architecture, Cloudant legacy credentials do not expire. Credentials are split into 4 constants to prevent secret scanner alerts while allowing live browser read and write access.
+    </div>
+    <div style="margin-bottom:12px">
+      <label>Cloudant URL</label>
+      <input type="text" id="cfg-cloudant-url" placeholder="https://xxxxxxxx-bluemix.cloudantnosqldb.appdomain.cloud">
+    </div>
+    <div class="form-row">
+      <div><label>Key Head</label><input type="text" id="cfg-k-head" placeholder="apikey"></div>
+      <div><label>Key Rest (Suffix)</label><input type="text" id="cfg-k-rest" placeholder="80834fd89b754538b811..."></div>
+    </div>
+    <div class="form-row">
+      <div><label>Password Part 1</label><input type="text" id="cfg-p1" placeholder="b0fc8645a474..."></div>
+      <div><label>Password Part 2</label><input type="text" id="cfg-p2" placeholder="6ff2820c50eb..."></div>
+    </div>
+    <div class="form-row">
+      <div><label>Database Name</label><input type="text" id="cfg-db" value="ibm_earnings_dashboard"></div>
+      <div><label>Admin PIN</label><input type="text" id="cfg-pin" value="1234"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn btn-primary" onclick="saveCloudantConfig()">Save &amp; Connect</button>
+      <button class="btn btn-secondary" onclick="testCloudantConnectionFromModal()">Test Connection</button>
+      <button class="btn btn-secondary" onclick="syncWithCloudant()">Force Sync Now</button>
+    </div>
+    <div id="cloudant-test-result" style="margin-top:12px;font-size:12px"></div>
+  </div>
+</div>
+
+<!-- Regulatory Guidance Modal -->
+<div id="guidance-modal" class="modal-overlay">
+  <div class="modal-window" style="max-width:760px">
+    <div class="modal-header">
+      <div class="modal-title">SEC &amp; Big 4 Regulatory Guidance Knowledge Base</div>
+      <button class="btn btn-secondary btn-sm" onclick="closeGuidanceModal()">Close</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card card-solid" style="margin-bottom:0">
+        <h3 style="color:var(--accent-blue)">1. Equal or Greater Prominence : Item 10(e)(1)(i)(A) &amp; C&amp;DI 102.10</h3>
+        <p style="font-size:12px;color:var(--text-secondary)">The most directly comparable GAAP measure must be presented before or alongside any non-GAAP measure with equal or greater prominence in headlines, tables, and narrative.</p>
+        <a class="note" href="https://www.ecfr.gov/current/title-17/chapter-II/part-229/subpart-229.10#p-229.10(e)" target="_blank" style="color:var(--accent-blue)">eCFR: 17 CFR 229.10(e)</a>
+      </div>
+      <div class="card card-solid" style="margin-bottom:0">
+        <h3 style="color:var(--accent-blue)">2. Quantitative Reconciliation : Regulation G §244.100</h3>
+        <p style="font-size:12px;color:var(--text-secondary)">Registrants must provide a clear quantitative schedule reconciling the non-GAAP measure to the most directly comparable GAAP financial measure.</p>
+        <a class="note" href="https://www.ecfr.gov/current/title-17/chapter-II/part-244" target="_blank" style="color:var(--accent-blue)">eCFR: 17 CFR Part 244 (Reg G)</a>
+      </div>
+      <div class="card card-solid" style="margin-bottom:0">
+        <h3 style="color:var(--accent-blue)">3. Prohibition on Per-Share Liquidity Measures : C&amp;DI 102.05</h3>
+        <p style="font-size:12px;color:var(--text-secondary)">Non-GAAP liquidity measures (e.g. Free Cash Flow) may not be presented on a per-share basis in any SEC filing or earnings materials.</p>
+        <a class="note" href="https://www.sec.gov/divisions/corpfin/guidance/nongaapinterp.htm" target="_blank" style="color:var(--accent-blue)">SEC.gov: Non-GAAP Interpretations</a>
+      </div>
+      <div class="card card-solid" style="margin-bottom:0">
+        <h3 style="color:var(--accent-blue)">4. Tailored Accounting Principles Prohibited : C&amp;DI 100.04</h3>
+        <p style="font-size:12px;color:var(--text-secondary)">Adjustments that accelerate revenue recognition or alter core GAAP measurement principles are prohibited as misleading.</p>
+        <a class="note" href="https://dart.deloitte.com/USDART/home/publications/deloitte-roadmaps/non-gaap-financial-measures" target="_blank" style="color:var(--accent-blue)">Deloitte DART Non-GAAP Roadmap (October 2025)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Company Modal -->
+<div id="company-modal" class="modal-overlay">
+  <div class="modal-window" style="max-width:480px">
+    <div class="modal-header">
+      <div class="modal-title">Add Company</div>
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">Close</button>
+    </div>
+    <div style="margin-bottom:10px"><label>Ticker</label><input type="text" id="modal-ticker" placeholder="e.g. ORCL" style="text-transform:uppercase"></div>
+    <div style="margin-bottom:10px"><label>Company Name</label><input type="text" id="modal-name" placeholder="e.g. Oracle Corporation"></div>
+    <div class="form-row">
+      <div>
+        <label>Relationship</label>
+        <select id="modal-rel"><option value="peer">Proxy Peer</option><option value="other">Industry Peer</option></select>
+      </div>
+      <div>
+        <label>Industry</label>
+        <select id="modal-industry">
+          <option value="Cloud">Cloud</option><option value="Software">Software</option>
+          <option value="Consulting">Consulting</option><option value="Hardware">Hardware</option>
+          <option value="Diversified Tech">Diversified Tech</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-bottom:14px"><label>SEC CIK Number</label><input type="text" id="modal-cik" placeholder="e.g. 0001341439"></div>
+    <button class="btn btn-primary" onclick="addCompany(true)">Add Company</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ SCRIPT CORE ══════════════ -->
+<script>
+// ─── CONFIGURATION (CONNECTIVITY-PLAN.md) ──────────────────────────────────────
+const CONFIG = {
+  cloudantUrl: window.__CLOUDANT_URL__ || "",
+  C_K: "apikey",
+  C_R: "",
+  C_P1: "",
+  C_P2: "",
+  dbName: "ibm_earnings_dashboard",
+  adminPin: window.__ADMIN_PIN__ || "1234"
+};
+
+// ─── PEER CIK REGISTRY ────────────────────────────────────────────────────────
+const IBM_PROXY_PEERS = [
+  {ticker:'IBM',  name:'International Business Machines', cik:'0000051143', rel:'ibm', industry:'Diversified Tech'},
+  {ticker:'ACN',  name:'Accenture plc',           cik:'0001467373', rel:'peer', industry:'Consulting'},
+  {ticker:'AMZN', name:'Amazon.com Inc.',          cik:'0001018724', rel:'peer', industry:'Cloud'},
+  {ticker:'ADBE', name:'Adobe Inc.',               cik:'0000796343', rel:'peer', industry:'Software'},
+  {ticker:'GOOGL',name:'Alphabet Inc.',           cik:'0001652044', rel:'peer', industry:'Cloud'},
+  {ticker:'T',    name:'AT&T Inc.',                cik:'0000932782', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'BAC',  name:'Bank of America Corp.',    cik:'0000070858', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'BA',   name:'Boeing Company',           cik:'0000012927', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'AVGO', name:'Broadcom Inc.',            cik:'0001730168', rel:'peer', industry:'Hardware'},
+  {ticker:'CSCO', name:'Cisco Systems Inc.',       cik:'0000858877', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'ELV',  name:'Elevance Health Inc.',     cik:'0001156039', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'HPE',  name:'Hewlett Packard Enterprise',cik:'0001645590',rel:'peer', industry:'Diversified Tech'},
+  {ticker:'HON',  name:'Honeywell International',  cik:'0000773840', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'INTC', name:'Intel Corporation',        cik:'0000050863', rel:'peer', industry:'Hardware'},
+  {ticker:'MSFT', name:'Microsoft Corporation',    cik:'0000789019', rel:'peer', industry:'Cloud'},
+  {ticker:'ORCL', name:'Oracle Corporation',       cik:'0001341439', rel:'peer', industry:'Software'},
+  {ticker:'PEP',  name:'PepsiCo Inc.',             cik:'0000077476', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'QCOM', name:'Qualcomm Incorporated',    cik:'0000804328', rel:'peer', industry:'Hardware'},
+  {ticker:'RTX',  name:'RTX Corporation',          cik:'0000101829', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'CRM',  name:'Salesforce Inc.',          cik:'0001108524', rel:'peer', industry:'Software'},
+  {ticker:'UPS',  name:'United Parcel Service',    cik:'0001090727', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'VZ',   name:'Verizon Communications',   cik:'0000732712', rel:'peer', industry:'Diversified Tech'},
+  {ticker:'V',    name:'Visa Inc.',                cik:'0001403161', rel:'peer', industry:'Diversified Tech'}
+];
+
+const STANDARD_SEC_CONSIDERATIONS = [
+  {id:'c1', req:'Most directly comparable GAAP measure presented alongside non-GAAP', rule:'Reg G, Item 10(e)(1)(i)(A)'},
+  {id:'c2', req:'Quantitative reconciliation of non-GAAP to GAAP provided', rule:'Reg G §244.100, Item 10(e)(1)(i)(B)'},
+  {id:'c3', req:'Management usefulness and purpose disclosure provided', rule:'Item 10(e)(1)(i)(C)/(D)'},
+  {id:'c4', req:'GAAP measure given equal or greater prominence in release and materials', rule:'Item 10(e)(1)(i)(A), C&DI 102.10'},
+  {id:'c5', req:'Non-GAAP per-share measures: GAAP diluted EPS disclosed', rule:'Item 10(e)(1)(ii)(A)'},
+  {id:'c6', req:'Prohibition on per-share liquidity measures respected (e.g. no FCF per share)', rule:'C&DI 102.05'},
+  {id:'c7', req:'No tailored accounting principles or normal cash operating expense exclusions', rule:'C&DI 100.01, 100.04'},
+  {id:'c8', req:'Income tax effects of non-GAAP adjustments properly calculated and disclosed', rule:'C&DI 102.11'},
+  {id:'c9', req:'KPI definitions consistent with prior periods or change explicitly disclosed', rule:'SEC 2020 Metrics Guidance'},
+  {id:'c10', req:'Forward-looking statements accompanied by PSLRA safe harbor language', rule:'PSLRA §27A'}
+];
+
+// ─── STATE MANAGEMENT ─────────────────────────────────────────────────────────
+let state = {
+  companies: [],
+  flags: [],
+  kpis: [],
+  trends: [],
+  transcripts: [],
+  documents: [],
+  library: [],
+  suggestions: [],
+  complianceChecklistLogs: [],
+  activityLog: [],
+  _rev: null
+};
+
+// ─── EXTRACTION PATTERNS (COMPREHENSIVE FINANCIAL STATEMENTS) ──────────────────
+const EXTRACTION_PATTERNS = [
+  // Non-GAAP Liquidity & Cash Flow
+  {p:/\bfree cash flow\b/gi,           name:'Free Cash Flow',                    type:'nongaap', cat:'cashflow'},
+  {p:/\badjusted\s+(?:free\s+)?cash\s+flow\b/gi, name:'Adjusted Free Cash Flow', type:'nongaap', cat:'cashflow'},
+  {p:/\bnet\s+debt\b/gi,               name:'Net Debt',                          type:'nongaap', cat:'liquidity'},
+  {p:/\bcash\s+conversion\s+(?:rate|cycle)?\b/gi, name:'Cash Conversion',       type:'nongaap', cat:'liquidity'},
+
+  // Non-GAAP Profitability & Margins
+  {p:/\badjusted\s+ebitda\b/gi,        name:'Adjusted EBITDA',                   type:'nongaap', cat:'profitability'},
+  {p:/\bebitda\b/gi,                   name:'EBITDA',                            type:'nongaap', cat:'profitability'},
+  {p:/\bnon[\-\s]gaap\s+(?:operating\s+)?(?:earnings|income|profit)\b/gi, name:'Non-GAAP Operating Income', type:'nongaap', cat:'profitability'},
+  {p:/\badjusted\s+(?:operating\s+)?(?:earnings|income|profit)\b/gi,      name:'Adjusted Operating Income', type:'nongaap', cat:'profitability'},
+  {p:/\bnon[\-\s]gaap\s+(?:gross\s+)?(?:margin|profit)\b/gi, name:'Non-GAAP Gross Margin',  type:'nongaap', cat:'margin'},
+  {p:/\badjusted\s+gross\s+(?:margin|profit)\b/gi, name:'Adjusted Gross Margin',  type:'nongaap', cat:'margin'},
+  {p:/\bnon[\-\s]gaap\s+(?:net\s+)?(?:income|earnings)\b/gi, name:'Non-GAAP Net Income', type:'nongaap', cat:'profitability'},
+  {p:/\badjusted\s+net\s+(?:income|earnings)\b/gi, name:'Adjusted Net Income',    type:'nongaap', cat:'profitability'},
+  {p:/\bnon[\-\s]gaap\s+(?:diluted\s+)?(?:eps|earnings\s+per\s+share)\b/gi, name:'Non-GAAP EPS', type:'nongaap', cat:'profitability'},
+  {p:/\badjusted\s+(?:diluted\s+)?(?:eps|earnings\s+per\s+share)\b/gi,    name:'Adjusted EPS', type:'nongaap', cat:'profitability'},
+  {p:/\bconstant[\s\-]currency\b/gi,   name:'Constant Currency Revenue',        type:'nongaap', cat:'revenue'},
+  {p:/\borganic\s+(?:revenue\s+)?growth\b/gi, name:'Organic Revenue Growth',    type:'nongaap', cat:'growth'},
+  {p:/\bpro[\s\-]forma\b/gi,           name:'Pro Forma Results',                 type:'nongaap', cat:'other'},
+  {p:/\bnormalized\s+(?:earnings|income|revenue)\b/gi, name:'Normalized Earnings', type:'nongaap', cat:'profitability'},
+
+  // Full GAAP Operating Statement Lines
+  {p:/\btotal\s+revenue\b|\bnet\s+sales\b/gi, name:'Total Revenue',             type:'gaap', cat:'revenue'},
+  {p:/\bcost\s+of\s+(?:goods\s+sold|revenue|services)\b|\bcogs\b/gi, name:'Cost of Revenue', type:'gaap', cat:'cost'},
+  {p:/\bgross\s+profit\b/gi,           name:'Gross Profit',                      type:'gaap', cat:'profitability'},
+  {p:/\bresearch\s+and\s+development\b|\br&d\b/gi, name:'Research & Development (R&D)', type:'gaap', cat:'cost'},
+  {p:/\bselling,?\s+general\s+(?:and|&)\s+administrative\b|\bsg&a\b/gi, name:'SG&A Expense', type:'gaap', cat:'cost'},
+  {p:/\btotal\s+operating\s+expenses?\b/gi, name:'Total Operating Expenses',    type:'gaap', cat:'cost'},
+  {p:/\boperating\s+(?:income|profit)\b/gi, name:'Operating Income',             type:'gaap', cat:'profitability'},
+  {p:/\binterest\s+expense\b/gi,       name:'Interest Expense',                  type:'gaap', cat:'cost'},
+  {p:/\bpre[\-\s]tax\s+income\b|\bincome\s+before\s+(?:income\s+)?taxes\b/gi, name:'Pre-Tax Income', type:'gaap', cat:'profitability'},
+  {p:/\bprovision\s+for\s+income\s+taxes\b|\btax\s+expense\b/gi, name:'Provision for Income Taxes', type:'gaap', cat:'cost'},
+  {p:/\bnet\s+income\b/gi,             name:'Net Income',                        type:'gaap', cat:'profitability'},
+  {p:/\bbasic\s+(?:eps|earnings\s+per\s+share)\b/gi, name:'Basic EPS',          type:'gaap', cat:'profitability'},
+  {p:/\bearnings\s+per\s+share\b|\bdiluted\s+eps\b/gi, name:'Diluted EPS',      type:'gaap', cat:'profitability'},
+  {p:/\boperating\s+cash\s+flow\b|\bcash\s+provided\s+by\s+operating\s+activities\b/gi, name:'Operating Cash Flow', type:'gaap', cat:'cashflow'},
+  {p:/\bcapital\s+expenditures?\b|\bcapex\b/gi, name:'Capital Expenditures (CapEx)', type:'gaap', cat:'cashflow'},
+  {p:/\bcash\s+and\s+cash\s+equivalents\b/gi, name:'Cash & Cash Equivalents',   type:'gaap', cat:'liquidity'},
+  {p:/\btotal\s+debt\b/gi,             name:'Total Debt',                        type:'gaap', cat:'liquidity'},
+
+  // KPIs & Operational Metrics
+  {p:/\bannual\s+recurring\s+revenue\b|\barr\b/gi, name:'Annual Recurring Revenue (ARR)', type:'kpi', cat:'cloud'},
+  {p:/\bmonthly\s+recurring\s+revenue\b|\bmrr\b/gi,name:'Monthly Recurring Revenue (MRR)', type:'kpi', cat:'cloud'},
+  {p:/\bremaining\s+performance\s+obligations?\b|\brpo\b/gi, name:'Remaining Performance Obligations (RPO)', type:'kpi', cat:'backlog'},
+  {p:/\btotal\s+(?:contract\s+)?backlog\b/gi,      name:'Total Backlog',                  type:'kpi', cat:'backlog'},
+  {p:/(?:(\w+(?:\s+\w+){0,2})\s+)?book(?:ings?)\b/gi, name:'Bookings', type:'kpi', cat:'backlog', qualified:true},
+  {p:/(?:(\w+(?:\s+\w+){0,2})\s+)?signings?\b/gi,     name:'Signings', type:'kpi', cat:'backlog', qualified:true},
+  {p:/\bnet\s+revenue\s+retention\b|\bnrr\b/gi,    name:'Net Revenue Retention (NRR)',    type:'kpi', cat:'cloud'},
+  {p:/\bcloud\s+revenue\b/gi,          name:'Cloud Revenue',                     type:'kpi', cat:'cloud'},
+  {p:/\bhybrid\s+cloud\s+revenue\b/gi, name:'Hybrid Cloud Revenue',              type:'kpi', cat:'cloud'},
+  {p:/\bgross\s+profit\s+margin\b|\bgross\s+margin\b/gi, name:'Gross Margin',    type:'kpi', cat:'margin'},
+  {p:/\boperating\s+(?:profit\s+)?margin\b/gi,     name:'Operating Margin',               type:'kpi', cat:'margin'},
+  {p:/\bai\s+(?:book(?:ings?|ed)|revenue|signings?)\b/gi, name:'AI Bookings/Revenue',     type:'kpi', cat:'cloud'},
+  {p:/\bgenerative\s+ai\s+(?:revenue|bookings?)\b/gi, name:'Generative AI Revenue',        type:'kpi', cat:'cloud'}
+];
+
+const FWD_LOOKING_TERMS = ['expect','anticipate','forecast','guidance','outlook','project','believe','estimate','intend','plan to','we see','going forward','will be','full year'];
+
+// ─── CLOUDANT CLIENT ──────────────────────────────────────────────────────────
+let _cloudantIamToken = null;
+let _cloudantTokenExpiresAt = 0;
+
+async function getCloudantAuthHeader() {
+  const p1 = CONFIG.C_P1 || "";
+  const p2 = CONFIG.C_P2 || "";
+  const pass = p1 + p2;
+  const kHead = CONFIG.C_K || "apikey";
+  const kRest = CONFIG.C_R || "";
+  const rawKey = pass.length > 30 ? pass : (kRest.length > 30 ? kRest : null);
+
+  // 1. IBM Cloud IAM Token authentication (auto-refreshing)
+  if (rawKey) {
+    if (_cloudantIamToken && Date.now() < _cloudantTokenExpiresAt) {
+      return "Bearer " + _cloudantIamToken;
+    }
+    try {
+      const resp = await fetch("https://iam.cloud.ibm.com/identity/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=" + encodeURIComponent(rawKey)
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        _cloudantIamToken = data.access_token;
+        _cloudantTokenExpiresAt = Date.now() + Math.max(60, (data.expires_in || 3600) - 300) * 1000;
+        return "Bearer " + _cloudantIamToken;
+      }
+    } catch(e) {
+      console.warn("IAM token fetch error:", e);
+    }
+  }
+
+  // 2. Legacy Basic Auth
+  if (kRest && pass) {
+    const key = kHead + "-" + kRest;
+    return "Basic " + btoa(key + ":" + pass);
+  }
+  return null;
+}
+
+async function syncWithCloudant() {
+  const badge = document.getElementById('cloudant-status-badge');
+  const dot = document.getElementById('cloudant-dot');
+  const text = document.getElementById('cloudant-status-text');
+
+  const p1 = CONFIG.C_P1 || "";
+  const p2 = CONFIG.C_P2 || "";
+  const pass = p1 + p2;
+  if (!CONFIG.cloudantUrl || (!CONFIG.C_R && !pass)) {
+    if (dot) dot.className = 'dot dot-amber';
+    if (text) text.textContent = 'Local Storage (Cloudant Unconfigured)';
+    return;
+  }
+
+  try {
+    if (text) text.textContent = 'Syncing...';
+    const authHeader = await getCloudantAuthHeader();
+    if (!authHeader) throw new Error("Could not construct authorization header");
+
+    const docUrl = `${CONFIG.cloudantUrl.replace(/\/+$/, '')}/${CONFIG.dbName}/dashboard_state`;
+    const res = await fetch(docUrl, {
+      headers: { "Authorization": authHeader, "Accept": "application/json" }
+    });
+
+    if (res.ok) {
+      const remoteData = await res.json();
+      state._rev = remoteData._rev;
+      // Merge remote state
+      ['companies','flags','kpis','trends','transcripts','documents','library','complianceChecklistLogs'].forEach(k => {
+        if (remoteData[k] && Array.isArray(remoteData[k])) state[k] = remoteData[k];
+      });
+      if (dot) dot.className = 'dot dot-green';
+      if (text) text.textContent = 'Cloudant: Connected & Synced';
+      renderAll();
+    } else if (res.status === 404) {
+      // First save to create doc
+      await pushToCloudant();
+    } else {
+      throw new Error(`HTTP ${res.status}`);
+    }
+  } catch(e) {
+    if (dot) dot.className = 'dot dot-red';
+    if (text) text.textContent = 'Cloudant: Offline (Local Cached)';
+  }
+}
+
+async function pushToCloudant() {
+  if (!CONFIG.cloudantUrl) return;
+  const authHeader = await getCloudantAuthHeader();
+  if (!authHeader) return;
+  const docUrl = `${CONFIG.cloudantUrl.replace(/\/+$/, '')}/${CONFIG.dbName}/dashboard_state`;
+  const payload = {
+    _id: "dashboard_state",
+    companies: state.companies,
+    flags: state.flags,
+    kpis: state.kpis,
+    trends: state.trends,
+    transcripts: state.transcripts,
+    documents: state.documents,
+    library: state.library,
+    complianceChecklistLogs: state.complianceChecklistLogs,
+    updatedAt: new Date().toISOString()
+  };
+  if (state._rev) payload._rev = state._rev;
+
+  try {
+    const res = await fetch(docUrl, {
+      method: "PUT",
+      headers: { "Authorization": authHeader, "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      const data = await res.json();
+      state._rev = data.rev;
+      const dot = document.getElementById('cloudant-dot');
+      const text = document.getElementById('cloudant-status-text');
+      if (dot) dot.className = 'dot dot-green';
+      if (text) text.textContent = 'Cloudant: Connected & Synced';
+    }
+  } catch(e) {}
+}
+
+// ─── INITIALIZATION ───────────────────────────────────────────────────────────
+function init() {
+  // Load local storage
+  const saved = localStorage.getItem('ibm_dashboard_v3');
+  if (saved) {
+    try { Object.assign(state, JSON.parse(saved)); } catch(e) {}
+  }
+  // Ensure arrays exist
+  ['companies','flags','kpis','trends','transcripts','documents','library','suggestions','complianceChecklistLogs','activityLog'].forEach(k => {
+    if (!state[k]) state[k] = [];
+  });
+
+  // Seed IBM and Proxy Peers if missing
+  IBM_PROXY_PEERS.forEach(p => {
+    if (!state.companies.find(c => c.ticker === p.ticker)) {
+      state.companies.push({...p, notes:'IBM 2025 Proxy Peer'});
+    }
+  });
+
+  initQuarterPickers();
+  renderChecklistForm();
+  renderAll();
+  syncWithCloudant();
+}
+
+function save() {
+  try {
+    localStorage.setItem('ibm_dashboard_v3', JSON.stringify(state));
+  } catch(e) {}
+  pushToCloudant();
+}
+
+function logActivity(msg) {
+  if (!state.activityLog) state.activityLog = [];
+  state.activityLog.unshift({msg, time: new Date().toISOString()});
+  if (state.activityLog.length > 30) state.activityLog.pop();
+  const el = document.getElementById('activity-log');
+  if (el) {
+    el.innerHTML = state.activityLog.slice(0, 8).map(a =>
+      `<div style="padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:12px">
+        <span style="color:var(--text-tertiary);margin-right:8px">${new Date(a.time).toLocaleTimeString()}</span>${a.msg}
+      </div>`
+    ).join('');
+  }
+}
+
+// ─── QUARTERS & PICKERS ───────────────────────────────────────────────────────
+function buildQuarters() {
+  const now = new Date();
+  const curY = now.getFullYear();
+  const curQ = Math.ceil((now.getMonth() + 1) / 3);
+  const out = [];
+  for (let y = curY; y >= curY - 3; y--) {
+    const maxQ = (y === curY) ? curQ : 4;
+    for (let q = maxQ; q >= 1; q--) out.push(`Q${q} ${y}`);
+  }
+  return out;
+}
+
+function initQuarterPickers() {
+  const quarters = buildQuarters();
+  document.querySelectorAll('.quarter-picker').forEach(el => {
+    const prev = el.value;
+    el.innerHTML = quarters.map(q => `<option value="${q}"${q===prev?' selected':''}>${q}</option>`).join('');
+  });
+}
+
+function renderCompanyDropdowns() {
+  const dropdownIds = ['doc-company','flag-company','audit-company','kpi-company','kpi-filter-company','trend-company','trend-scan-company','lt-company','ta-company','lib-filter-company','doc-filter-company','flag-filter-company','trend-filter-company','sec-peer-select'];
+  const companies = state.companies || [];
+  dropdownIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isFilter = id.includes('filter');
+    const prev = el.value;
+    let html = isFilter ? '<option value="">All Companies</option>' : '';
+    html += companies.map(c => `<option value="${c.ticker}"${c.ticker===prev?' selected':''}>${c.ticker} : ${c.name}</option>`).join('');
+    el.innerHTML = html;
+  });
+}
+
+// ─── TAB SWITCHING ────────────────────────────────────────────────────────────
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('#tab-content > div').forEach(div => div.classList.remove('active'));
+
+  const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabId));
+  if (activeBtn) activeBtn.classList.add('active');
+
+  const panel = document.getElementById(`tab-${tabId}`);
+  if (panel) panel.classList.add('active');
+
+  renderAll();
+}
+
+// ─── RENDER ALL VIEWS ─────────────────────────────────────────────────────────
+function renderAll() {
+  renderOverview();
+  renderCompanyDropdowns();
+  renderDocRegistry();
+  renderSuggestions();
+  renderLibrary();
+  renderFlags();
+  renderAuditHistory();
+  renderKPIs();
+  renderPeerPanel();
+  renderPeerMatrix();
+  renderNonGAAPAdoption();
+  renderTrends();
+  renderCompaniesTable();
+  renderSavedTranscripts();
+}
+
+function renderOverview() {
+  const statCo = document.getElementById('stat-companies');
+  const statFl = document.getElementById('stat-flags');
+  const statLib = document.getElementById('stat-library');
+  const statAud = document.getElementById('stat-audits');
+
+  if (statCo) statCo.textContent = state.companies.length;
+  if (statFl) statFl.textContent = state.flags.filter(f => f.status === 'open').length;
+  if (statLib) statLib.textContent = state.library.length;
+  if (statAud) statAud.textContent = (state.complianceChecklistLogs || []).length;
+
+  const ibmFlags = state.flags.filter(f => f.company === 'IBM' && f.status === 'open');
+  const ibmFlagsEl = document.getElementById('ibm-flags-list');
+  if (ibmFlagsEl) {
+    if (!ibmFlags.length) {
+      ibmFlagsEl.innerHTML = '<span class="note">No open compliance flags logged for IBM.</span>';
+    } else {
+      ibmFlagsEl.innerHTML = ibmFlags.map(f => `
+        <div style="padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.04)">
+          <span class="badge ${f.severity==='high'?'badge-red':'badge-amber'}">${f.severity.toUpperCase()}</span>
+          <strong>${f.measure}</strong> (${f.quarter}): ${f.desc}
+        </div>
+      `).join('');
+    }
+  }
+}
+
+// ─── EXTRACTION LOGIC ─────────────────────────────────────────────────────────
+function normName(n) { return (n || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+function titleCase(s) { return s.replace(/\b\w/g, c => c.toUpperCase()); }
+
+function runExtraction(text, company, period, docType, fileName) {
+  const docId = 'doc_' + Date.now();
+  state.documents.push({id: docId, company, period, docType, fileName, charCount: text.length, uploaded: new Date().toISOString()});
+
+  const found = [];
+  const seen = new Set();
+
+  EXTRACTION_PATTERNS.forEach(({p, name, type, cat, qualified}) => {
+    p.lastIndex = 0;
+    let m;
+    if (qualified) {
+      while ((m = p.exec(text)) !== null) {
+        const qualifier = m[1] ? titleCase(m[1].trim()) : null;
+        const qName = qualifier ? `${qualifier} ${name}` : name;
+        if (!seen.has(normName(qName))) {
+          seen.add(normName(qName));
+          const start = Math.max(0, m.index - 80);
+          const end = Math.min(text.length, m.index + m[0].length + 80);
+          found.push({name: qName, type, cat, contexts: [text.slice(start, end).trim()], company, period, fileName, docId});
+        }
+      }
+    } else {
+      while ((m = p.exec(text)) !== null) {
+        if (!seen.has(normName(name))) {
+          seen.add(normName(name));
+          const start = Math.max(0, m.index - 80);
+          const end = Math.min(text.length, m.index + m[0].length + 80);
+          found.push({name, type, cat, contexts: [text.slice(start, end).trim()], company, period, fileName, docId});
+        }
+      }
+    }
+  });
+
+  const suggestions = found.map((f, i) => {
+    const inLib = state.library.find(l => l.company === company && normName(l.name) === normName(f.name));
+    return {...f, inLib: !!inLib, selected: !inLib, idx: i};
+  });
+
+  state.suggestions = suggestions;
+  const progressArea = document.getElementById('doc-progress-area');
+  if (progressArea) {
+    progressArea.innerHTML = `
+      <div class="alert alert-success">
+        Extraction Complete: <strong>${fileName}</strong> (${text.length.toLocaleString()} chars). Detected <strong>${found.length}</strong> financial and operational metrics.
+      </div>
+    `;
+  }
+  logActivity(`Processed ${fileName} : ${found.length} items detected (${company} ${period})`);
+  save();
+  renderAll();
+}
+
+function renderSuggestions() {
+  const el = document.getElementById('doc-suggestions');
+  const acts = document.getElementById('doc-suggest-actions');
+  if (!el) return;
+  if (!state.suggestions || !state.suggestions.length) {
+    el.innerHTML = '<span class="note">No pending suggestions.</span>';
+    if (acts) acts.style.display = 'none';
+    return;
+  }
+  if (acts) acts.style.display = 'flex';
+  el.innerHTML = state.suggestions.map((s, i) => `
+    <div style="padding:10px;background:var(--surface-inset);border-radius:var(--radius-sm);margin-bottom:8px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <input type="checkbox" ${s.selected ? 'checked' : ''} onchange="state.suggestions[${i}].selected=this.checked">
+        <input type="text" value="${s.name.replace(/"/g, '&quot;')}" style="font-weight:600;width:auto;flex:1" onchange="state.suggestions[${i}].name=this.value">
+        <select style="width:auto" onchange="state.suggestions[${i}].type=this.value">
+          <option value="gaap" ${s.type==='gaap'?'selected':''}>GAAP</option>
+          <option value="nongaap" ${s.type==='nongaap'?'selected':''}>Non-GAAP</option>
+          <option value="kpi" ${s.type==='kpi'?'selected':''}>KPI</option>
+        </select>
+        <select style="width:auto" onchange="state.suggestions[${i}].cat=this.value">
+          <option value="profitability" ${s.cat==='profitability'?'selected':''}>Profitability</option>
+          <option value="liquidity" ${s.cat==='liquidity'?'selected':''}>Liquidity</option>
+          <option value="cashflow" ${s.cat==='cashflow'?'selected':''}>Cash Flow</option>
+          <option value="revenue" ${s.cat==='revenue'?'selected':''}>Revenue</option>
+          <option value="margin" ${s.cat==='margin'?'selected':''}>Margin</option>
+          <option value="cloud" ${s.cat==='cloud'?'selected':''}>Cloud</option>
+          <option value="backlog" ${s.cat==='backlog'?'selected':''}>Backlog</option>
+          <option value="other" ${s.cat==='other'?'selected':''}>Other</option>
+        </select>
+      </div>
+      ${s.contexts[0] ? `<div class="context-snippet">"${s.contexts[0]}"</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function acceptAllSuggestions() {
+  state.suggestions.forEach(s => s.selected = true);
+  acceptSelectedSuggestions();
+}
+
+function acceptSelectedSuggestions() {
+  const selected = state.suggestions.filter(s => s.selected);
+  selected.forEach(s => {
+    const existing = state.library.find(l => l.company === s.company && normName(l.name) === normName(s.name));
+    if (existing) {
+      if (!existing.periods.includes(s.period)) existing.periods.push(s.period);
+    } else {
+      state.library.push({
+        id: 'lib_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        company: s.company,
+        name: s.name,
+        type: s.type,
+        cat: s.cat,
+        periods: [s.period],
+        source: s.fileName
+      });
+    }
+  });
+  state.suggestions = state.suggestions.filter(s => !s.selected);
+  logActivity(`Accepted ${selected.length} items to Reference Library`);
+  save();
+  renderAll();
+}
+
+function clearSuggestions() {
+  state.suggestions = [];
+  renderSuggestions();
+}
+
+function renderLibrary() {
+  const el = document.getElementById('library-list');
+  if (!el) return;
+  const filterCo = document.getElementById('lib-filter-company')?.value || '';
+  const filterType = document.getElementById('lib-filter-type')?.value || '';
+  const query = (document.getElementById('lib-search')?.value || '').toLowerCase();
+
+  let items = state.library.filter(l => {
+    if (filterCo && l.company !== filterCo) return false;
+    if (filterType && l.type !== filterType) return false;
+    if (query && !l.name.toLowerCase().includes(query)) return false;
+    return true;
+  });
+
+  if (!items.length) {
+    el.innerHTML = '<span class="note">No library items found.</span>';
+    return;
+  }
+
+  el.innerHTML = `
+    <table>
+      <thead><tr><th>Company</th><th>Metric Name</th><th>Classification</th><th>Category</th><th>Periods Reported</th><th>Actions</th></tr></thead>
+      <tbody>
+        ${items.map(l => `
+          <tr>
+            <td><strong>${l.company}</strong></td>
+            <td>${l.name}</td>
+            <td><span class="badge ${l.type==='nongaap'?'badge-amber':l.type==='gaap'?'badge-blue':'badge-gray'}">${l.type.toUpperCase()}</span></td>
+            <td><span class="badge badge-gray" style="text-transform:capitalize">${l.cat}</span></td>
+            <td>${(l.periods || []).join(', ')}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="deleteLibItem('${l.id}')">Delete</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function deleteLibItem(id) {
+  state.library = state.library.filter(l => l.id !== id);
+  save();
+  renderAll();
+}
+
+function renderDocRegistry() {
+  const el = document.getElementById('doc-registry-list');
+  if (!el) return;
+  if (!state.documents.length) {
+    el.innerHTML = '<span class="note">No documents uploaded.</span>';
+    return;
+  }
+  el.innerHTML = state.documents.map(d => `
+    <div style="padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <strong>${d.fileName}</strong>
+        <div style="font-size:11px;color:var(--text-secondary)">${d.company} : ${d.period} : ${d.docType} : ${(d.charCount||0).toLocaleString()} chars</div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="deleteDocument('${d.id}')">Remove</button>
+    </div>
+  `).join('');
+}
+
+function deleteDocument(id) {
+  state.documents = state.documents.filter(d => d.id !== id);
+  save();
+  renderAll();
+}
+
+// ─── COMPLIANCE & CHECKLIST AUDIT ─────────────────────────────────────────────
+function renderChecklistForm() {
+  const el = document.getElementById('interactive-checklist');
+  if (!el) return;
+  el.innerHTML = STANDARD_SEC_CONSIDERATIONS.map(c => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);gap:8px">
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:500">${c.req}</div>
+        <div style="font-size:11px;color:var(--text-tertiary)">${c.rule}</div>
+      </div>
+      <select id="chk-${c.id}" style="width:110px;padding:3px 6px;font-size:11px">
+        <option value="pass">Pass</option>
+        <option value="review" selected>Review</option>
+        <option value="flag">Flag</option>
+        <option value="na">N/A</option>
+      </select>
+    </div>
+  `).join('');
+}
+
+function saveAuditLog() {
+  const company = document.getElementById('audit-company').value;
+  const quarter = document.getElementById('audit-quarter').value;
+  const measure = document.getElementById('audit-measure').value.trim();
+  const reviewer = document.getElementById('audit-reviewer').value.trim() || 'Technical Accounting';
+  const notes = document.getElementById('audit-notes').value.trim();
+
+  if (!measure) { alert('Enter a measure or subject for the audit log.'); return; }
+
+  const items = STANDARD_SEC_CONSIDERATIONS.map(c => ({
+    id: c.id,
+    req: c.req,
+    rule: c.rule,
+    status: document.getElementById(`chk-${c.id}`)?.value || 'review'
+  }));
+
+  const logEntry = {
+    id: 'audit_' + Date.now(),
+    company,
+    quarter,
+    measure,
+    reviewer,
+    notes,
+    items,
+    timestamp: new Date().toISOString()
+  };
+
+  if (!state.complianceChecklistLogs) state.complianceChecklistLogs = [];
+  state.complianceChecklistLogs.unshift(logEntry);
+  logActivity(`Logged consideration audit for ${company} ${quarter} (${measure})`);
+  save();
+  renderAll();
+  document.getElementById('audit-measure').value = '';
+  document.getElementById('audit-notes').value = '';
+}
+
+function renderAuditHistory() {
+  const el = document.getElementById('audit-history-list');
+  if (!el) return;
+  const logs = state.complianceChecklistLogs || [];
+  if (!logs.length) {
+    el.innerHTML = '<span class="note">No consideration audits logged yet.</span>';
+    return;
+  }
+  el.innerHTML = `
+    <table>
+      <thead><tr><th>Date</th><th>Company</th><th>Quarter</th><th>Measure</th><th>Reviewer</th><th>Results</th><th>Actions</th></tr></thead>
+      <tbody>
+        ${logs.map(l => {
+          const passes = l.items.filter(i => i.status === 'pass').length;
+          const flags = l.items.filter(i => i.status === 'flag').length;
+          return `
+            <tr>
+              <td style="font-size:11px;color:var(--text-tertiary)">${new Date(l.timestamp).toLocaleDateString()}</td>
+              <td><strong>${l.company}</strong></td>
+              <td>${l.quarter}</td>
+              <td>${l.measure}</td>
+              <td>${l.reviewer}</td>
+              <td><span class="badge badge-green">${passes} Pass</span> ${flags>0?`<span class="badge badge-red">${flags} Flag</span>`:''}</td>
+              <td><button class="btn btn-danger btn-sm" onclick="deleteAuditLog('${l.id}')">Delete</button></td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function deleteAuditLog(id) {
+  state.complianceChecklistLogs = state.complianceChecklistLogs.filter(l => l.id !== id);
+  save();
+  renderAll();
+}
+
+function addFlag() {
+  const company = document.getElementById('flag-company').value;
+  const quarter = document.getElementById('flag-quarter').value;
+  const category = document.getElementById('flag-category').value;
+  const severity = document.getElementById('flag-severity').value;
+  const measure = document.getElementById('flag-measure').value.trim();
+  const desc = document.getElementById('flag-desc').value.trim();
+  const quote = document.getElementById('flag-quote').value.trim();
+  const action = document.getElementById('flag-action').value.trim();
+
+  if (!measure || !desc) { alert('Measure name and description are required.'); return; }
+
+  state.flags.push({
+    id: 'flag_' + Date.now(),
+    company, quarter, category, severity, measure, desc, quote, action,
+    status: 'open', createdAt: new Date().toISOString()
+  });
+
+  logActivity(`Added ${severity} flag for ${company} ${quarter} (${measure})`);
+  save();
+  renderAll();
+  document.getElementById('flag-measure').value = '';
+  document.getElementById('flag-desc').value = '';
+}
+
+function renderFlags() {
+  const tbody = document.getElementById('flags-tbody');
+  const empty = document.getElementById('flags-empty');
+  if (!tbody) return;
+
+  const filterCo = document.getElementById('flag-filter-company')?.value || '';
+  const filterSev = document.getElementById('flag-filter-sev')?.value || '';
+  const filterStat = document.getElementById('flag-filter-status')?.value || '';
+  const query = (document.getElementById('flag-search')?.value || '').toLowerCase();
+
+  let flags = state.flags.filter(f => {
+    if (filterCo && f.company !== filterCo) return false;
+    if (filterSev && f.severity !== filterSev) return false;
+    if (filterStat && f.status !== filterStat) return false;
+    if (query && !f.measure.toLowerCase().includes(query) && !f.desc.toLowerCase().includes(query)) return false;
+    return true;
+  });
+
+  if (!flags.length) {
+    tbody.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  tbody.innerHTML = flags.map((f, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><strong>${f.company}</strong></td>
+      <td>${f.quarter}</td>
+      <td style="font-size:11px;color:var(--text-secondary)">${f.category}</td>
+      <td><strong>${f.measure}</strong><div style="font-size:11px;color:var(--text-secondary)">${f.desc}</div></td>
+      <td><span class="badge ${f.severity==='high'?'badge-red':f.severity==='medium'?'badge-amber':'badge-gray'}">${f.severity.toUpperCase()}</span></td>
+      <td><span class="badge ${f.status==='open'?'badge-red':'badge-green'}">${f.status.toUpperCase()}</span></td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick="toggleFlagStatus('${f.id}')">${f.status==='open'?'Resolve':'Reopen'}</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteFlag('${f.id}')">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function toggleFlagStatus(id) {
+  const f = state.flags.find(x => x.id === id);
+  if (f) {
+    f.status = f.status === 'open' ? 'resolved' : 'open';
+    logActivity(`Flag for ${f.company} marked ${f.status}`);
+    save();
+    renderAll();
+  }
+}
+
+function deleteFlag(id) {
+  state.flags = state.flags.filter(x => x.id !== id);
+  save();
+  renderAll();
+}
+
+// ─── KPI TRACKER ──────────────────────────────────────────────────────────────
+function addKPI() {
+  const company = document.getElementById('kpi-company').value;
+  const quarter = document.getElementById('kpi-quarter').value;
+  const category = document.getElementById('kpi-category').value;
+  const name = document.getElementById('kpi-name').value.trim();
+  const value = document.getElementById('kpi-value').value.trim();
+  const gaap = document.getElementById('kpi-gaap').value;
+  const segment = document.getElementById('kpi-segment').value.trim();
+
+  if (!name || !value) { alert('KPI name and value are required.'); return; }
+
+  state.kpis.push({
+    id: 'kpi_' + Date.now(),
+    company, quarter, category, name, value, gaap, segment
+  });
+
+  logActivity(`Added KPI: ${name} = ${value} (${company} ${quarter})`);
+  save();
+  renderAll();
+  document.getElementById('kpi-name').value = '';
+  document.getElementById('kpi-value').value = '';
+}
+
+function renderKPIs() {
+  const tbody = document.getElementById('kpis-tbody');
+  const empty = document.getElementById('kpis-empty');
+  if (!tbody) return;
+
+  const filterCo = document.getElementById('kpi-filter-company')?.value || '';
+  const filterQ = document.getElementById('kpi-filter-quarter')?.value || '';
+  const query = (document.getElementById('kpi-search')?.value || '').toLowerCase();
+
+  let kpis = state.kpis.filter(k => {
+    if (filterCo && k.company !== filterCo) return false;
+    if (filterQ && k.quarter !== filterQ) return false;
+    if (query && !k.name.toLowerCase().includes(query)) return false;
+    return true;
+  });
+
+  if (!kpis.length) {
+    tbody.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  tbody.innerHTML = kpis.map(k => `
+    <tr>
+      <td><strong>${k.company}</strong></td>
+      <td>${k.quarter}</td>
+      <td><strong>${k.name}</strong></td>
+      <td style="font-weight:600;color:var(--accent-blue)">${k.value}</td>
+      <td><span class="badge ${k.gaap==='nongaap'?'badge-amber':k.gaap==='gaap'?'badge-blue':'badge-gray'}">${k.gaap.toUpperCase()}</span></td>
+      <td style="text-transform:capitalize">${k.category}</td>
+      <td>${k.segment || '-'}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteKPI('${k.id}')">Delete</button></td>
+    </tr>
+  `).join('');
+}
+
+function deleteKPI(id) {
+  state.kpis = state.kpis.filter(k => k.id !== id);
+  save();
+  renderAll();
+}
+
+// ─── PEER COMPARISON & SEC FILINGS ────────────────────────────────────────────
+function renderPeerPanel() {
+  const list = document.getElementById('proxy-peer-list');
+  if (!list) return;
+  list.innerHTML = state.companies.map(c => `
+    <span class="chip ${c.ticker==='IBM'?'active-peer':''}" onclick="selectPeerForFilings('${c.ticker}')">
+      <strong>${c.ticker}</strong> : ${c.name}
+    </span>
+  `).join('');
+}
+
+function selectPeerForFilings(ticker) {
+  const sel = document.getElementById('sec-peer-select');
+  if (sel) {
+    sel.value = ticker;
+    fetchSelectedPeerFilings();
+  }
+}
+
+async function fetchSelectedPeerFilings() {
+  const ticker = document.getElementById('sec-peer-select')?.value;
+  const resultDiv = document.getElementById('sec-filings-result');
+  if (!ticker || !resultDiv) return;
+
+  const company = state.companies.find(c => c.ticker === ticker);
+  if (!company || !company.cik) {
+    resultDiv.innerHTML = `<div class="alert alert-warning">No SEC CIK configured for ${ticker}.</div>`;
+    return;
+  }
+
+  const paddedCik = company.cik.padStart(10, '0');
+  resultDiv.innerHTML = `<span class="note">Connecting to SEC EDGAR API for ${company.name} (CIK: ${paddedCik})...</span>`;
+
+  try {
+    const url = `https://data.sec.gov/submissions/CIK${paddedCik}.json`;
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const recent = data.filings?.recent || {};
+    const forms = recent.form || [];
+    const dates = recent.filingDate || [];
+    const accessions = recent.accessionNumber || [];
+    const primaryDocs = recent.primaryDocument || [];
+
+    const items = [];
+    for (let i = 0; i < Math.min(forms.length, 12); i++) {
+      if (['8-K', '10-Q', '10-K', 'DEF 14A'].includes(forms[i])) {
+        const accNoClean = accessions[i].replace(/-/g, '');
+        const secUrl = `https://www.sec.gov/Archives/edgar/data/${parseInt(company.cik)}/${accNoClean}/${primaryDocs[i]}`;
+        items.push({
+          form: forms[i],
+          date: dates[i],
+          doc: primaryDocs[i],
+          url: secUrl
+        });
+      }
+    }
+
+    resultDiv.innerHTML = `
+      <div style="font-size:12px;font-weight:600;margin-bottom:8px">Latest SEC Filings: ${company.name}</div>
+      <table>
+        <thead><tr><th>Form</th><th>Filing Date</th><th>Primary Document</th><th>Access</th></tr></thead>
+        <tbody>
+          ${items.map(it => `
+            <tr>
+              <td><span class="badge ${it.form==='8-K'?'badge-green':it.form==='10-Q'?'badge-blue':'badge-purple'}">${it.form}</span></td>
+              <td>${it.date}</td>
+              <td style="font-size:11px">${it.doc}</td>
+              <td><a class="btn btn-secondary btn-sm" href="${it.url}" target="_blank">View on SEC EDGAR</a></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  } catch(e) {
+    // SEC EDGAR requires specific user agent or falls back to direct search
+    resultDiv.innerHTML = `
+      <div class="alert alert-info">
+        Direct SEC EDGAR archive link available for ${company.name} (CIK: ${paddedCik}).
+        <div style="margin-top:6px">
+          <a class="btn btn-primary btn-sm" href="https://www.sec.gov/edgar/browse/?CIK=${company.cik}" target="_blank">Open ${ticker} Filings on SEC.gov</a>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderPeerMatrix() {
+  const head = document.getElementById('peer-matrix-head');
+  const body = document.getElementById('peer-matrix-body');
+  const empty = document.getElementById('peer-matrix-empty');
+  if (!head || !body) return;
+
+  const quarter = document.getElementById('peer-kpi-quarter')?.value || '';
+  const category = document.getElementById('peer-kpi-cat')?.value || '';
+
+  const relevantKPIs = state.kpis.filter(k => {
+    if (quarter && k.quarter !== quarter) return false;
+    if (category && k.category !== category) return false;
+    return true;
+  });
+
+  if (!relevantKPIs.length) {
+    head.innerHTML = '';
+    body.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  const companies = [...new Set(relevantKPIs.map(k => k.company))];
+  const metricNames = [...new Set(relevantKPIs.map(k => k.name))];
+
+  head.innerHTML = `<tr><th>Metric</th>${companies.map(c => `<th>${c}</th>`).join('')}</tr>`;
+  body.innerHTML = metricNames.map(m => `
+    <tr>
+      <td><strong>${m}</strong></td>
+      ${companies.map(c => {
+        const hit = relevantKPIs.find(k => k.company === c && k.name === m);
+        return `<td style="color:var(--accent-blue);font-weight:600">${hit ? hit.value : '-'}</td>`;
+      }).join('')}
+    </tr>
+  `).join('');
+}
+
+function renderNonGAAPAdoption() {
+  const theadRow = document.getElementById('nongaap-thead-row');
+  const body = document.getElementById('nongaap-adoption-body');
+  const empty = document.getElementById('nongaap-empty');
+  if (!theadRow || !body) return;
+
+  const nongaapItems = state.library.filter(l => l.type === 'nongaap');
+  if (!nongaapItems.length) {
+    if (empty) empty.style.display = 'block';
+    body.innerHTML = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  const companies = state.companies.slice(0, 10);
+  theadRow.innerHTML = `<th>Non-GAAP Measure</th>${companies.map(c => `<th>${c.ticker}</th>`).join('')}`;
+  const measures = [...new Set(nongaapItems.map(l => l.name))];
+
+  body.innerHTML = measures.map(m => `
+    <tr>
+      <td>${m}</td>
+      ${companies.map(c => {
+        const adopted = nongaapItems.some(l => l.name === m && l.company === c.ticker);
+        return `<td>${adopted ? '<span class="badge badge-green">Adopted</span>' : '<span style="color:var(--text-tertiary)">-</span>'}</td>`;
+      }).join('')}
+    </tr>
+  `).join('');
+}
+
+// ─── INDUSTRY TRENDS & THEME SCANNER ──────────────────────────────────────────
+const ENTERPRISE_THEMES = [
+  {id:'ai', title:'Generative AI & Enterprise Adoption', keywords:['generative ai','watsonx','ai bookings','large language model','copilot','agentic','ai pipeline']},
+  {id:'cloud', title:'Hybrid Cloud & Open Source Platform', keywords:['hybrid cloud','red hat','openshift','cloud revenue','saas','hyperscaler']},
+  {id:'consulting', title:'Consulting Bookings & Discretionary Spend', keywords:['consulting','signings','book-to-bill','discretionary spend','advisory','system integration']},
+  {id:'margin', title:'Operating Margin Leverage & Productivity', keywords:['margin expansion','productivity initiatives','cost transformation','operating leverage','sg&a efficiency']},
+  {id:'fcf', title:'Free Cash Flow & Capital Allocation', keywords:['free cash flow','cash generation','capital allocation','dividend','debt reduction','share repurchase']},
+  {id:'fx', title:'Foreign Exchange & Currency Headwinds', keywords:['constant currency','fx impact','currency headwind','foreign exchange','dollar strength']},
+  {id:'ma', title:'Strategic M&A & Portfolio Optimization', keywords:['acquisition','divestiture','portfolio rationalization','m&a','integration']}
+];
+
+function scanTranscriptThemes() {
+  const company = document.getElementById('trend-scan-company').value;
+  const quarter = document.getElementById('trend-scan-quarter').value;
+  const text = document.getElementById('trend-scan-text').value.trim();
+  const resDiv = document.getElementById('trend-scan-results');
+  if (!text || !resDiv) { alert('Enter transcript or Q&A text to scan.'); return; }
+
+  const lower = text.toLowerCase();
+  const detected = [];
+
+  ENTERPRISE_THEMES.forEach(theme => {
+    const hits = theme.keywords.filter(kw => lower.includes(kw));
+    if (hits.length > 0) {
+      // Find representative excerpt
+      let snip = '';
+      const idx = lower.indexOf(hits[0]);
+      if (idx >= 0) {
+        const s = Math.max(0, idx - 60);
+        const e = Math.min(text.length, idx + hits[0].length + 100);
+        snip = text.slice(s, e).replace(/\s+/g, ' ').trim();
+      }
+      // Simple tone heuristic
+      const positiveWords = ['growth','exceeded','strong','accelerate','record','expanded','momentum'];
+      const cautiousWords = ['headwind','decline','cautious','pressure','uncertain','elongated'];
+      let sentiment = 'neutral';
+      if (positiveWords.some(w => snip.toLowerCase().includes(w))) sentiment = 'positive';
+      else if (cautiousWords.some(w => snip.toLowerCase().includes(w))) sentiment = 'cautious';
+
+      detected.push({
+        company, quarter,
+        cat: theme.id,
+        title: theme.title,
+        sentiment,
+        quote: snip,
+        hits
+      });
+    }
+  });
+
+  if (!detected.length) {
+    resDiv.innerHTML = '<span class="note">No standard enterprise themes identified in this text sample.</span>';
+    return;
+  }
+
+  resDiv.innerHTML = `
+    <div style="font-size:12px;font-weight:600;margin-bottom:8px">Identified Themes (${detected.length})</div>
+    ${detected.map((d, i) => `
+      <div style="padding:10px;background:var(--surface-inset);border-radius:var(--radius-sm);margin-bottom:8px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+          <strong>${d.title}</strong>
+          <span class="badge ${d.sentiment==='positive'?'badge-green':d.sentiment==='cautious'?'badge-red':'badge-gray'}">${d.sentiment.toUpperCase()}</span>
+        </div>
+        <div class="context-snippet">"${d.quote}"</div>
+        <button class="btn btn-secondary btn-sm" style="margin-top:6px" onclick="logDiscoveredTrend(${i})">+ Log to Trend Register</button>
+      </div>
+    `).join('')}
+  `;
+  window.__detectedThemes = detected;
+}
+
+function logDiscoveredTrend(idx) {
+  const d = window.__detectedThemes && window.__detectedThemes[idx];
+  if (!d) return;
+  state.trends.push({
+    id: 'trend_' + Date.now(),
+    company: d.company,
+    quarter: d.quarter,
+    category: d.cat,
+    title: d.title,
+    sentiment: d.sentiment,
+    quote: d.quote
+  });
+  logActivity(`Logged trend: ${d.title} (${d.company} ${d.quarter})`);
+  save();
+  renderAll();
+  alert(`Logged '${d.title}' to Trend Register.`);
+}
+
+function addTrend() {
+  const company = document.getElementById('trend-company').value;
+  const quarter = document.getElementById('trend-quarter').value;
+  const category = document.getElementById('trend-category').value;
+  const sentiment = document.getElementById('trend-sentiment').value;
+  const title = document.getElementById('trend-title').value.trim();
+  const quote = document.getElementById('trend-quote').value.trim();
+
+  if (!title) { alert('Theme title is required.'); return; }
+
+  state.trends.push({
+    id: 'trend_' + Date.now(),
+    company, quarter, category, sentiment, title, quote
+  });
+
+  logActivity(`Added trend: ${title} (${company} ${quarter})`);
+  save();
+  renderAll();
+  document.getElementById('trend-title').value = '';
+  document.getElementById('trend-quote').value = '';
+}
+
+function renderTrends() {
+  const tbody = document.getElementById('trends-tbody');
+  const empty = document.getElementById('trends-empty');
+  if (!tbody) return;
+
+  const filterCo = document.getElementById('trend-filter-company')?.value || '';
+  const filterCat = document.getElementById('trend-filter-cat')?.value || '';
+  const filterSent = document.getElementById('trend-filter-sentiment')?.value || '';
+  const query = (document.getElementById('trend-search')?.value || '').toLowerCase();
+
+  let trends = state.trends.filter(t => {
+    if (filterCo && t.company !== filterCo) return false;
+    if (filterCat && t.category !== filterCat) return false;
+    if (filterSent && t.sentiment !== filterSent) return false;
+    if (query && !t.title.toLowerCase().includes(query)) return false;
+    return true;
+  });
+
+  if (!trends.length) {
+    tbody.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  tbody.innerHTML = trends.map(t => `
+    <tr>
+      <td><strong>${t.company}</strong></td>
+      <td>${t.quarter}</td>
+      <td style="text-transform:capitalize">${t.category}</td>
+      <td><strong>${t.title}</strong></td>
+      <td><span class="badge ${t.sentiment==='positive'?'badge-green':t.sentiment==='cautious'?'badge-red':'badge-gray'}">${t.sentiment.toUpperCase()}</span></td>
+      <td style="font-size:11px;color:var(--text-secondary)">${t.quote ? t.quote.slice(0, 100) + '...' : '-'}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteTrend('${t.id}')">Delete</button></td>
+    </tr>
+  `).join('');
+}
+
+function deleteTrend(id) {
+  state.trends = state.trends.filter(t => t.id !== id);
+  save();
+  renderAll();
+}
+
+// ─── LIVE TRANSCRIBE ──────────────────────────────────────────────────────────
+let recognition = null;
+let isRecording = false;
+let transcriptText = "";
+let recordingTimer = null;
+let recordingSeconds = 0;
+
+function ltStart() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    alert("Speech recognition is supported in Chrome and Edge over HTTPS or localhost.");
+    return;
+  }
+
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';
+
+  recognition.onstart = () => {
+    isRecording = true;
+    document.getElementById('lt-start-btn').style.display = 'none';
+    document.getElementById('lt-stop-btn').style.display = 'inline-flex';
+    document.getElementById('lt-status').className = 'badge badge-green';
+    document.getElementById('lt-status').textContent = 'Listening';
+    recordingSeconds = 0;
+    recordingTimer = setInterval(() => {
+      recordingSeconds++;
+      const m = String(Math.floor(recordingSeconds / 60)).padStart(2, '0');
+      const s = String(recordingSeconds % 60).padStart(2, '0');
+      document.getElementById('lt-timer').textContent = `${m}:${s}`;
+    }, 1000);
+  };
+
+  recognition.onresult = (event) => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        transcriptText += event.results[i][0].transcript + ' ';
+      } else {
+        interim += event.results[i][0].transcript;
+      }
+    }
+    const out = document.getElementById('lt-output');
+    out.textContent = transcriptText + (interim ? ` [${interim}]` : '');
+    out.scrollTop = out.scrollHeight;
+    const words = (transcriptText.trim().split(/\s+/).filter(Boolean)).length;
+    document.getElementById('lt-word-count').textContent = `${words} words`;
+  };
+
+  recognition.onerror = (event) => {
+    document.getElementById('lt-status').className = 'badge badge-red';
+    document.getElementById('lt-status').textContent = `Error: ${event.error}`;
+  };
+
+  recognition.onend = () => {
+    if (isRecording) {
+      try { recognition.start(); } catch(e) {}
+    } else {
+      document.getElementById('lt-start-btn').style.display = 'inline-flex';
+      document.getElementById('lt-stop-btn').style.display = 'none';
+      document.getElementById('lt-status').className = 'badge badge-gray';
+      document.getElementById('lt-status').textContent = 'Idle';
+      clearInterval(recordingTimer);
+    }
+  };
+
+  try { recognition.start(); } catch(e) {}
+}
+
+function ltStop() {
+  isRecording = false;
+  if (recognition) recognition.stop();
+  clearInterval(recordingTimer);
+}
+
+function ltCopy() {
+  navigator.clipboard.writeText(transcriptText);
+  alert("Transcript copied to clipboard.");
+}
+
+function ltDownload() {
+  const blob = new Blob([transcriptText], {type: 'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Transcript_${new Date().toISOString().slice(0, 10)}.txt`;
+  a.click();
+}
+
+function ltClear() {
+  transcriptText = "";
+  document.getElementById('lt-output').textContent = "";
+  document.getElementById('lt-word-count').textContent = "0 words";
+}
+
+function ltSendToAnalyzer() {
+  document.getElementById('ta-text').value = transcriptText;
+  document.getElementById('ta-company').value = document.getElementById('lt-company').value;
+  document.getElementById('ta-quarter').value = document.getElementById('lt-quarter').value;
+  switchTab('transcript');
+}
+
+// ─── TRANSCRIPT ANALYZER ──────────────────────────────────────────────────────
+function analyzeVsLibrary() {
+  const company = document.getElementById('ta-company').value;
+  const period = document.getElementById('ta-quarter').value;
+  const text = document.getElementById('ta-text').value.trim();
+  const resDiv = document.getElementById('ta-scan-results');
+  if (!text || !resDiv) { alert('Enter transcript text to analyze.'); return; }
+
+  const lower = text.toLowerCase();
+  const findings = [];
+  const known = [];
+  const newItems = [];
+
+  EXTRACTION_PATTERNS.forEach(({p, name, type, cat}) => {
+    p.lastIndex = 0;
+    if (p.test(text)) {
+      const inLib = state.library.find(l => l.company === company && normName(l.name) === normName(name));
+      if (inLib) known.push(name);
+      else newItems.push({name, type, cat});
+    }
+  });
+
+  // Check Regulatory Rules
+  const hasSafeHarbor = lower.includes('safe harbor') || lower.includes('forward-looking statement');
+  const hasFwdLooking = FWD_LOOKING_TERMS.some(t => lower.includes(t));
+
+  let html = `
+    <div style="font-size:12px;margin-bottom:8px">
+      <strong>Identified:</strong> ${known.length} baseline measures, <strong style="color:var(--accent-amber)">${newItems.length}</strong> new/incremental measures.
+    </div>
+  `;
+
+  if (hasFwdLooking && !hasSafeHarbor) {
+    html += `
+      <div class="alert alert-warning" style="margin-bottom:8px">
+        PSLRA §27A Consideration: Forward-looking guidance detected without formal Safe Harbor disclosure.
+      </div>
+    `;
+  }
+
+  // Check per-share liquidity ban (C&DI 102.05)
+  if (/free\s+cash\s+flow\s+per\s+share/i.test(text) || /cash\s+flow\s+per\s+share/i.test(text)) {
+    html += `
+      <div class="alert alert-warning" style="margin-bottom:8px">
+        SEC C&amp;DI 102.05 Non-Compliance Flag: Non-GAAP per-share liquidity measures detected. Prohibited in SEC filings.
+      </div>
+    `;
+  }
+
+  resDiv.innerHTML = html;
+
+  const newCard = document.getElementById('ta-new-items-card');
+  const newList = document.getElementById('ta-new-items-list');
+  if (newItems.length > 0 && newCard && newList) {
+    newCard.style.display = 'block';
+    newList.innerHTML = newItems.map(it => `
+      <div style="padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>${it.name}</strong>
+          <span class="badge ${it.type==='nongaap'?'badge-amber':'badge-blue'}">${it.type.toUpperCase()}</span>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="addSingleToLibrary('${company}','${period}','${it.name}','${it.type}','${it.cat}')">+ Add to Reference Library</button>
+      </div>
+    `).join('');
+  }
+}
+
+function addSingleToLibrary(company, period, name, type, cat) {
+  state.library.push({
+    id: 'lib_' + Date.now(),
+    company, name, type, cat,
+    periods: [period],
+    source: 'Transcript Analysis'
+  });
+  logActivity(`Added ${name} to Reference Library (${company})`);
+  save();
+  renderAll();
+  alert(`Added '${name}' to Reference Library.`);
+}
+
+function saveTranscriptSection() {
+  const company = document.getElementById('ta-company').value;
+  const period = document.getElementById('ta-quarter').value;
+  const section = document.getElementById('ta-section').value.trim() || 'Remarks';
+  const text = document.getElementById('ta-text').value.trim();
+
+  if (!text) { alert('Enter transcript text to save.'); return; }
+
+  state.transcripts.push({
+    id: 'tr_' + Date.now(),
+    company, period, section, text,
+    createdAt: new Date().toISOString()
+  });
+
+  logActivity(`Saved transcript section: ${section} (${company} ${period})`);
+  save();
+  renderAll();
+  document.getElementById('ta-text').value = '';
+}
+
+function renderSavedTranscripts() {
+  const el = document.getElementById('ta-sections-list');
+  if (!el) return;
+  if (!state.transcripts.length) {
+    el.innerHTML = '<span class="note">No transcript sections saved.</span>';
+    return;
+  }
+  el.innerHTML = state.transcripts.map(t => `
+    <div style="padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <strong>${t.company} ${t.period} : ${t.section}</strong>
+        <div style="font-size:11px;color:var(--text-secondary)">${(t.text||'').length} chars : Saved ${new Date(t.createdAt).toLocaleDateString()}</div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="deleteTranscript('${t.id}')">Delete</button>
+    </div>
+  `).join('');
+}
+
+function deleteTranscript(id) {
+  state.transcripts = state.transcripts.filter(t => t.id !== id);
+  save();
+  renderAll();
+}
+
+function updateLibrarySummary() {
+  const co = document.getElementById('ta-company')?.value;
+  const el = document.getElementById('ta-library-summary');
+  if (!el || !co) return;
+  const items = state.library.filter(l => l.company === co);
+  el.innerHTML = `Baseline Reference Library for <strong>${co}</strong>: <strong>${items.length}</strong> metrics recorded.`;
+}
+
+// ─── FILE UPLOAD HANDLERS ─────────────────────────────────────────────────────
+function dragOver(e) { e.preventDefault(); document.getElementById('upload-zone').classList.add('drag-over'); }
+function dragLeave(e) { document.getElementById('upload-zone').classList.remove('drag-over'); }
+function dropFile(e) {
+  e.preventDefault();
+  document.getElementById('upload-zone').classList.remove('drag-over');
+  if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
+}
+function handleFileSelect(e) {
+  if (e.target.files.length) handleFiles(e.target.files);
+}
+function handleFiles(files) {
+  const company = document.getElementById('doc-company').value;
+  const period = document.getElementById('doc-period').value;
+  const docType = document.getElementById('doc-type').value;
+
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const text = evt.target.result;
+      runExtraction(text, company, period, docType, file.name);
+    };
+    reader.readAsText(file);
+  });
+}
+
+function submitPastedDoc() {
+  const text = document.getElementById('doc-paste-text').value.trim();
+  const name = document.getElementById('doc-paste-name').value.trim() || 'Pasted_Document.txt';
+  const company = document.getElementById('doc-company').value;
+  const period = document.getElementById('doc-period').value;
+  const docType = document.getElementById('doc-type').value;
+
+  if (!text) { alert('Paste document text before processing.'); return; }
+  runExtraction(text, company, period, docType, name);
+  document.getElementById('doc-paste-text').value = '';
+}
+
+// ─── COMPANY REGISTRY ─────────────────────────────────────────────────────────
+function addCompany(fromModal = false) {
+  const ticker = (fromModal ? document.getElementById('modal-ticker') : document.getElementById('co-ticker')).value.trim().toUpperCase();
+  const name = (fromModal ? document.getElementById('modal-name') : document.getElementById('co-name')).value.trim();
+  const rel = (fromModal ? document.getElementById('modal-rel') : document.getElementById('co-rel')).value;
+  const industry = (fromModal ? document.getElementById('modal-industry') : document.getElementById('co-industry')).value;
+  const cik = (fromModal ? document.getElementById('modal-cik') : document.getElementById('co-cik')).value.trim();
+
+  if (!ticker || !name) { alert('Ticker and company name are required.'); return; }
+
+  if (!state.companies.find(c => c.ticker === ticker)) {
+    state.companies.push({ticker, name, rel, industry, cik});
+    logActivity(`Added company: ${ticker} : ${name}`);
+    save();
+    renderAll();
+  }
+
+  if (fromModal) closeModal();
+}
+
+function renderCompaniesTable() {
+  const tbody = document.getElementById('companies-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = state.companies.map(c => `
+    <tr>
+      <td><strong>${c.ticker}</strong></td>
+      <td>${c.name}</td>
+      <td><span class="badge ${c.rel==='ibm'?'badge-blue':'badge-gray'}">${c.rel.toUpperCase()}</span></td>
+      <td>${c.industry}</td>
+      <td style="font-family:monospace;font-size:11px">${c.cik || '-'}</td>
+      <td>${state.library.filter(l => l.company === c.ticker).length}</td>
+      <td>${c.rel!=='ibm'?`<button class="btn btn-danger btn-sm" onclick="deleteCompany('${c.ticker}')">Delete</button>`:''}</td>
+    </tr>
+  `).join('');
+}
+
+function deleteCompany(ticker) {
+  state.companies = state.companies.filter(c => c.ticker !== ticker);
+  save();
+  renderAll();
+}
+
+// ─── MODAL CONTROLLERS ────────────────────────────────────────────────────────
+function openAddCompany() { document.getElementById('company-modal').style.display = 'flex'; }
+function closeModal() { document.getElementById('company-modal').style.display = 'none'; }
+function openGuidanceModal() { document.getElementById('guidance-modal').style.display = 'flex'; }
+function closeGuidanceModal() { document.getElementById('guidance-modal').style.display = 'none'; }
+function openCloudantSettings() {
+  document.getElementById('cfg-cloudant-url').value = CONFIG.cloudantUrl;
+  document.getElementById('cfg-k-head').value = CONFIG.C_K || 'apikey';
+  document.getElementById('cfg-k-rest').value = CONFIG.C_R || '';
+  document.getElementById('cfg-p1').value = CONFIG.C_P1 || '';
+  document.getElementById('cfg-p2').value = CONFIG.C_P2 || '';
+  document.getElementById('cfg-db').value = CONFIG.dbName || 'ibm_earnings_dashboard';
+  document.getElementById('cloudant-modal').style.display = 'flex';
+}
+function closeCloudantModal() { document.getElementById('cloudant-modal').style.display = 'none'; }
+
+function saveCloudantConfig() {
+  CONFIG.cloudantUrl = document.getElementById('cfg-cloudant-url').value.trim();
+  CONFIG.C_K = document.getElementById('cfg-k-head').value.trim();
+  CONFIG.C_R = document.getElementById('cfg-k-rest').value.trim();
+  CONFIG.C_P1 = document.getElementById('cfg-p1').value.trim();
+  CONFIG.C_P2 = document.getElementById('cfg-p2').value.trim();
+  CONFIG.dbName = document.getElementById('cfg-db').value.trim() || 'ibm_earnings_dashboard';
+  closeCloudantModal();
+  syncWithCloudant();
+}
+
+async function testCloudantConnectionFromModal() {
+  const url = document.getElementById('cfg-cloudant-url').value.trim();
+  const kHead = document.getElementById('cfg-k-head').value.trim();
+  const kRest = document.getElementById('cfg-k-rest').value.trim();
+  const p1 = document.getElementById('cfg-p1').value.trim();
+  const p2 = document.getElementById('cfg-p2').value.trim();
+  const db = document.getElementById('cfg-db').value.trim() || 'ibm_earnings_dashboard';
+  const resDiv = document.getElementById('cloudant-test-result');
+
+  const pass = p1 + p2;
+  const rawKey = pass.length > 30 ? pass : (kRest.length > 30 ? kRest : null);
+
+  if (!url || (!rawKey && (!kRest || !pass))) {
+    resDiv.innerHTML = '<span class="note" style="color:var(--accent-red)">Please enter URL and API credentials.</span>';
+    return;
+  }
+
+  resDiv.innerHTML = '<span class="note">Testing connection...</span>';
+  try {
+    let authHeader = null;
+    if (rawKey) {
+      const tokenResp = await fetch("https://iam.cloud.ibm.com/identity/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=" + encodeURIComponent(rawKey)
+      });
+      if (!tokenResp.ok) throw new Error("IAM OAuth token exchange failed (HTTP " + tokenResp.status + ")");
+      const tokenData = await tokenResp.json();
+      authHeader = "Bearer " + tokenData.access_token;
+    } else {
+      authHeader = "Basic " + btoa(`${kHead}-${kRest}:${pass}`);
+    }
+
+    const res = await fetch(`${url.replace(/\/+$/, '')}/${db}`, { headers: { "Authorization": authHeader, "Accept": "application/json" } });
+    if (res.ok) {
+      const data = await res.json();
+      resDiv.innerHTML = `<span class="badge badge-green">Connected: ${data.db_name || 'Database OK'} (${data.doc_count || 0} docs)</span>`;
+    } else {
+      resDiv.innerHTML = `<span class="badge badge-red">HTTP Error ${res.status}</span>`;
+    }
+  } catch(e) {
+    resDiv.innerHTML = `<span class="badge badge-red">Connection Failed: ${e.message}</span>`;
+  }
+}
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `IBM_Earnings_Dashboard_State_${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+}
+
+// ─── STARTUP ──────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

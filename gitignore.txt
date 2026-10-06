@@ -1,0 +1,56 @@
+# Rename this file to .gitignore when initializing the git repository.
+# Stored as gitignore.txt to avoid being excluded from this workspace.
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# ── Node ──────────────────────────────────────────────────────────────────────
+node_modules/
+dist/
+build/
+.vite/
+
+# ── Environment and secrets — never commit ────────────────────────────────────
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*.p12
+
+# ── Database and local data ───────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+data/uploads/
+
+# ── IDE and OS ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ── Test and coverage output ──────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+playwright-report/
+test-results/
+
+# ── Terraform state — contains sensitive resource details ─────────────────────
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/

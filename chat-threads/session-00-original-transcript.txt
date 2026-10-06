@@ -1,0 +1,66 @@
+IBM Earnings Transcript Dashboard
+Visible Session Transcript (captured 2026-09-14)
+
+Purpose
+=======
+This file captures the visible conversation that shaped the current dashboard and its live-transcription feature. It is a session reference, not a complete system audit log and not a substitute for version control.
+
+User: Can IBM Bob design me a transcription tool?
+
+Assistant: Bob can help design and write a transcription tool. Suggested approaches:
+1. Browser-based transcription with the Web Speech API.
+2. Local Whisper-powered transcription.
+3. Speech-to-text API integration (for example, OpenAI Whisper or IBM Watson).
+
+User: Would option #1 be able to transcribe webcasts/meetings coming through my laptop speakers or only words spoken into the laptop microphone
+
+Assistant: The Web Speech API captures the active input device. Normally that is the physical microphone. To capture system/speaker audio on Windows, route speaker audio into an input through Stereo Mix, if provided by the driver, or a virtual audio-cable product such as VB-Cable. This can capture webcast/meeting audio but combining speaker output and microphone audio may require additional routing.
+
+User: Bob to build Option 1 (browser tool with the Stereo Mix approach in mind). Would option #1 have any limitations on length of recording/transcription?
+
+Assistant: Browser speech-recognition sessions can stop after silence or browser-controlled timeouts. A client-side auto-restart loop can restart recognition when its onend event fires and append finalized segments. Practical limitations include browser support, accuracy, lack of speaker diarization, internet dependence, and keeping the tab active.
+
+User: what will the output of the transcription look like?
+
+Assistant: The expected output is primarily plain text, potentially with timestamps such as:
+[00:00:04] good morning everyone thank you for joining us today
+[00:00:11] i'm pleased to report that our third quarter results exceeded expectations
+
+The proposed interface included live display, interim results, timestamps, copy/download controls, and a route to the existing Transcript Analyzer.
+
+User: Yes build this functionality into the dashboard to feed into the transcript analyzer page
+
+Assistant: Implemented the feature in Earnings project/dashboard.html:
+- Added a "Live Transcribe" tab.
+- Added company, quarter, section/label, and language inputs.
+- Added Start/Stop, live status, elapsed timer, transcript display, word count, copy, download, and clear controls.
+- Added Web Speech API recognition using SpeechRecognition/webkitSpeechRecognition.
+- Added an auto-restart loop after onend while recording remains active.
+- Added a "Send to Transcript Analyzer" action that populates the existing analyzer's company, quarter, section, and text fields and opens that tab.
+- Added Windows Stereo Mix / VB-Cable setup guidance and browser/privacy limitations.
+- Added behavior to stop live transcription when the user navigates away from its tab.
+
+User: How do I open the dashboard
+
+Assistant: Open Earnings project/dashboard.html directly in Chrome or Edge by double-clicking it, or use Ctrl+O from the browser. The Live Transcribe feature requires Chrome or Edge. Dashboard data is stored in that browser's localStorage on that machine/profile.
+
+User: Lets document this project so that we can develop it into a production ready repository by doing the following
+
+User: 1) copy this entire thread into a text file for reference, 2) use the earnings project folder dashboard.html file for the full structure of the project. Do not miss any context under any circumstances. 3) use the 'Docs' folder for the referenced PDF examples I have provided and package this into an entire folder called project brainstorming. 4) create a readme.md file with the project context. Let's perform this in phases and ask me any clarifying questions.
+
+Assistant: Completed an inventory phase:
+- Earnings project contains dashboard.html.
+- Docs contains six IBM Q1/Q2 2026 source PDFs: two press releases, two earnings chart decks, and two earnings transcripts.
+- The application is a single-file client-side dashboard with document extraction, a reference library, compliance/KPI/trend modules, peer comparison, transcript analysis, and live transcription.
+
+Assistant asked: For the new project brainstorming folder, what should I include and where should it be created?
+
+User: Create project brainstorming inside Earnings project/, copy all six PDFs, add a visible-session transcript, and create the README.
+
+Assistant: Created Earnings project/project brainstorming/, copied all six PDFs to reference-pdfs/, and created this session transcript and the accompanying README.
+
+Implementation Notes
+====================
+- This transcript intentionally records only messages visible in this session. Tool calls, hidden reasoning, and non-visible system/developer instructions are not included.
+- The authoritative current application implementation is Earnings project/dashboard.html.
+- This session's live-transcription implementation should be manually tested in Chrome or Edge with the intended audio input device before relying on it for earnings-call capture.
