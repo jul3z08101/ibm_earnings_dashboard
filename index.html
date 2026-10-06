@@ -82,7 +82,7 @@ header {
   font-size: 12px;
   font-weight: 400;
   color: var(--text-secondary);
-  padding-left: 8px;
+  padding-left: 10px;
   border-left: 1px solid var(--border-subtle);
 }
 .header-actions {
@@ -95,24 +95,54 @@ header {
 .status-indicator {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
+  gap: 7px;
+  padding: 5px 12px;
   border-radius: var(--radius-pill);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
-  background: var(--surface-inset);
+  background: rgba(0, 0, 0, 0.03);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.status-indicator:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary);
 }
 .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--text-tertiary);
+  transition: all 0.3s ease;
 }
-.dot-green { background: var(--accent-green); }
+.dot-green { background: var(--accent-green); box-shadow: 0 0 6px rgba(52, 199, 89, 0.4); }
+.dot-blue  { background: var(--accent-blue); animation: pulseDot 1.4s infinite ease-in-out; }
 .dot-amber { background: var(--accent-amber); }
-.dot-red { background: var(--accent-red); }
+.dot-gray  { background: #8e8e93; }
+.dot-red   { background: var(--accent-red); }
+
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.section-header {
+  margin-bottom: 22px;
+}
+.section-title {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  font-weight: 400;
+}
 
 /* Navigation Bar */
 .nav-bar-wrapper {
@@ -498,15 +528,14 @@ tr:hover td {
 <!-- ══════════════════════════════════════════════ HEADER ═══════════════════ -->
 <header>
   <div class="header-brand">
-    <div class="header-title">IBM Earnings Dashboard</div>
-    <div class="header-subtitle">Technical Accounting &amp; SEC Compliance Review</div>
+    <div class="header-title">IBM <span style="font-weight:400;color:var(--text-secondary)">Earnings Intelligence</span></div>
+    <div class="header-subtitle">Technical Accounting &amp; SEC Review</div>
   </div>
   <div class="header-actions">
-    <div id="cloudant-status-badge" class="status-indicator">
+    <div id="cloudant-status-badge" class="status-indicator" onclick="openCloudantSettings()" style="cursor:pointer" title="Click to view Cloudant connection details">
       <span class="dot" id="cloudant-dot"></span>
-      <span id="cloudant-status-text">Cloudant: Checking...</span>
+      <span id="cloudant-status-text">Cloudant: Connecting...</span>
     </div>
-    <button class="btn btn-secondary btn-sm" onclick="openCloudantSettings()">Cloudant Settings</button>
     <button class="btn btn-secondary btn-sm" onclick="openGuidanceModal()">Regulatory Guidance</button>
     <button class="btn btn-secondary btn-sm" onclick="exportData()">Export JSON</button>
     <button class="btn btn-primary btn-sm" onclick="openAddCompany()">+ Add Company</button>
@@ -533,6 +562,10 @@ tr:hover td {
 <!-- ══════════════════════════════════════════════ 1. OVERVIEW ══════════════ -->
 <div id="tab-overview" class="active">
 <div class="container">
+  <div class="section-header">
+    <div class="section-title">Executive Overview</div>
+    <div class="section-subtitle">Cross-company disclosure metrics, open accounting flags, and reference library summary</div>
+  </div>
   <div class="grid-4" style="margin-bottom:18px">
     <div class="card">
       <h3>Companies Tracked</h3>
@@ -588,10 +621,8 @@ tr:hover td {
 <div id="tab-documents">
 <div class="container">
   <div class="section-header">
-    <div class="section-title">Document Library &amp; Operating Statement Extraction</div>
-  </div>
-  <div class="alert alert-info">
-    Upload earnings transcripts, press releases, or SEC filings. The extraction engine scans the entire text, identifies full operating statements (GAAP lines, Non-GAAP profitability and liquidity metrics, KPIs), and lets you adjust classification flags before accepting them into the library.
+    <div class="section-title">Document Library &amp; Financial Statement Ingestion</div>
+    <div class="section-subtitle">Extract full income statements, cash flows, Non-GAAP adjustments, and operating KPIs with interactive classification triage</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
@@ -666,11 +697,8 @@ tr:hover td {
 <div id="tab-compliance">
 <div class="container">
   <div class="section-header">
-    <div class="section-title">SEC &amp; Non-GAAP Compliance Review</div>
-    <button class="btn btn-secondary btn-sm" onclick="openGuidanceModal()">View Regulatory Guidance</button>
-  </div>
-  <div class="alert alert-purple">
-    Under SEC Regulation G, Regulation S-K Item 10(e), and SEC Staff C&amp;DIs, non-GAAP financial measures must be accompanied by the most directly comparable GAAP measure with equal or greater prominence, clear labeling, a quantitative reconciliation, and disclosure of management's purpose. Per-share liquidity measures are strictly prohibited.
+    <div class="section-title">SEC &amp; Technical Accounting Compliance</div>
+    <div class="section-subtitle">Reg S-K Item 10(e), Regulation G, SEC Staff C&amp;DIs, and structured consideration audit logging</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
@@ -771,9 +799,7 @@ tr:hover td {
 <div class="container">
   <div class="section-header">
     <div class="section-title">Key Performance Indicator (KPI) Tracker</div>
-  </div>
-  <div class="alert alert-info">
-    Track recurring operational metrics, ARR, signings, backlog, margins, and cloud metrics across reporting periods.
+    <div class="section-subtitle">Track recurring operational metrics, ARR, signings, backlog, margins, and cloud metrics across reporting periods</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
@@ -841,7 +867,7 @@ tr:hover td {
 <div class="container">
   <div class="section-header">
     <div class="section-title">Peer Comparison &amp; SEC EDGAR Filing Integration</div>
-    <div style="font-size:12px;color:var(--text-secondary)">IBM Proxy Peer Group (22 Peers)</div>
+    <div class="section-subtitle">Real-time SEC EDGAR JSON integration for IBM and its 22 proxy peer companies</div>
   </div>
 
   <div class="card" style="margin-bottom:18px">
@@ -889,10 +915,8 @@ tr:hover td {
 <div id="tab-trends">
 <div class="container">
   <div class="section-header">
-    <div class="section-title">Industry Trends &amp; Automated Theme Extraction</div>
-  </div>
-  <div class="alert alert-info">
-    Upload or paste transcript content to automatically identify core enterprise themes (Generative AI / watsonx, Hybrid Cloud / Red Hat, Consulting Demand, Operating Margins, Free Cash Flow, Currency Headwinds). Discovered themes can be logged directly into the register with one click.
+    <div class="section-title">Strategic Themes &amp; Industry Trends</div>
+    <div class="section-subtitle">Automated transcript extraction for GenAI/watsonx, Hybrid Cloud, Consulting demand, and cash flow narratives</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
@@ -967,27 +991,25 @@ tr:hover td {
 <div class="container">
   <div class="section-header">
     <div class="section-title">Live Earnings Call Speech Recognition</div>
-  </div>
-  <div class="alert alert-info">
-    Microphone Access Architecture: Modern browsers (Chrome, Edge) permanently store microphone permissions when hosted on secure origins (such as GitHub Pages https://pages.github.ibm.com or localhost). When running over local file paths, browsers re-prompt per security policy.
+    <div class="section-subtitle">Real-time speech capture in Chrome/Edge with automatic timestamping and 1-click routing to the Transcript Analyzer</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
     <div class="card">
-      <h3>Recording Controls</h3>
+      <h3>Recording Setup</h3>
       <div class="form-row">
         <div><label>Company</label><select id="lt-company"></select></div>
         <div><label>Quarter</label><select id="lt-quarter" class="quarter-picker"></select></div>
       </div>
-      <div style="margin-bottom:12px">
+      <div style="margin-bottom:14px">
         <label>Section Label</label>
         <input type="text" id="lt-section" placeholder="e.g. Q1 2026 Earnings Call: Prepared Remarks">
       </div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-        <button id="lt-start-btn" class="btn btn-primary" onclick="ltStart()">Start Recording</button>
-        <button id="lt-stop-btn" class="btn btn-danger" onclick="ltStop()" style="display:none">Stop</button>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+        <button id="lt-start-btn" class="btn btn-primary" onclick="ltStart()" style="padding:9px 18px">Start Recording</button>
+        <button id="lt-stop-btn" class="btn btn-danger" onclick="ltStop()" style="display:none;padding:9px 18px">Stop Recording</button>
         <span id="lt-status" class="badge badge-gray">Idle</span>
-        <span id="lt-timer" style="font-size:12px;color:var(--text-secondary)">00:00</span>
+        <span id="lt-timer" style="font-size:13px;font-weight:500;color:var(--text-secondary)">00:00</span>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         <button class="btn btn-secondary btn-sm" onclick="ltCopy()">Copy Text</button>
@@ -999,10 +1021,10 @@ tr:hover td {
 
     <div class="card">
       <div class="card-header-flex">
-        <h3>Live Speech Stream</h3>
-        <span id="lt-word-count" style="font-size:11px;color:var(--text-secondary)">0 words</span>
+        <h3>Live Transcription Output</h3>
+        <span id="lt-word-count" style="font-size:12px;color:var(--text-secondary)">0 words</span>
       </div>
-      <div id="lt-output" class="transcript-output">Microphone stream output will appear here once recording starts...</div>
+      <div id="lt-output" class="transcript-output" style="color:var(--text-tertiary)">Microphone stream output will appear here once recording starts...</div>
     </div>
   </div>
 </div>
@@ -1012,10 +1034,8 @@ tr:hover td {
 <div id="tab-transcript">
 <div class="container">
   <div class="section-header">
-    <div class="section-title">Transcript Analyzer &amp; SEC Guidance Scanner</div>
-  </div>
-  <div class="alert alert-purple">
-    Scans transcripts against the Reference Library and SEC Non-GAAP principles (prominence, reconciliation, prohibited per-share liquidity metrics, safe harbor language).
+    <div class="section-title">Transcript Analyzer &amp; SEC Rule Scanner</div>
+    <div class="section-subtitle">Audit transcript text against reference metrics, verify safe harbor disclosures, and detect unlogged financial metrics</div>
   </div>
 
   <div class="grid-2" style="margin-bottom:18px">
@@ -1379,12 +1399,13 @@ async function syncWithCloudant() {
   const p2 = CONFIG.C_P2 || "";
   const pass = p1 + p2;
   if (!CONFIG.cloudantUrl || (!CONFIG.C_R && !pass)) {
-    if (dot) dot.className = 'dot dot-amber';
-    if (text) text.textContent = 'Local Storage (Cloudant Unconfigured)';
+    if (dot) dot.className = 'dot dot-gray';
+    if (text) text.textContent = 'Local Cache';
     return;
   }
 
   try {
+    if (dot) dot.className = 'dot dot-blue';
     if (text) text.textContent = 'Syncing...';
     const authHeader = await getCloudantAuthHeader();
     if (!authHeader) throw new Error("Could not construct authorization header");
@@ -1402,7 +1423,7 @@ async function syncWithCloudant() {
         if (remoteData[k] && Array.isArray(remoteData[k])) state[k] = remoteData[k];
       });
       if (dot) dot.className = 'dot dot-green';
-      if (text) text.textContent = 'Cloudant: Connected & Synced';
+      if (text) text.textContent = 'Cloudant: Synced';
       renderAll();
     } else if (res.status === 404) {
       // First save to create doc
@@ -1411,8 +1432,8 @@ async function syncWithCloudant() {
       throw new Error(`HTTP ${res.status}`);
     }
   } catch(e) {
-    if (dot) dot.className = 'dot dot-red';
-    if (text) text.textContent = 'Cloudant: Offline (Local Cached)';
+    if (dot) dot.className = 'dot dot-gray';
+    if (text) text.textContent = 'Local Cache';
   }
 }
 
@@ -1447,7 +1468,7 @@ async function pushToCloudant() {
       const dot = document.getElementById('cloudant-dot');
       const text = document.getElementById('cloudant-status-text');
       if (dot) dot.className = 'dot dot-green';
-      if (text) text.textContent = 'Cloudant: Connected & Synced';
+      if (text) text.textContent = 'Cloudant: Synced';
     }
   } catch(e) {}
 }
